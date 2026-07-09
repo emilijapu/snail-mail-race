@@ -441,9 +441,9 @@ window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":
 <section class="section reg" id="register" aria-labelledby="reg-h">
   <div class="stamp-wm" style="top:-20px;left:-40px" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="eyebrow">Form 14-B · Season Registration &amp; Inquiry</span>
+    <span class="eyebrow">Form 14-B · Season Registration</span>
     <h2 class="section-title" id="reg-h">Join the league</h2>
-    <p class="section-lede">Registration is free — you cover your own postage. Complete the form below and a human will reply, eventually.</p>
+    <p class="section-lede">Register for <strong id="seasonEventLabel">the current season mail-off</strong> via Wix Events. General inquiries belong on the <a href="/contact.html">contact page</a>.</p>
 
     <div class="form-shell">
       <aside class="form-aside">
@@ -496,9 +496,10 @@ window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":
           </div>
           <p class="reassure">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
-            We only use your email to respond to this inquiry. No newsletters unless you opt in.
+            Registration is recorded via Wix Events. No payment required for season entry.
           </p>
-          <button type="submit" class="btn btn--lg" style="width:100%">Submit registration</button>
+          <p id="regErr" class="form-err" hidden></p>
+          <button type="submit" class="btn btn--lg" style="width:100%">Register for this season</button>
         </form>
 
         <div class="form-success" id="formSuccess" role="status">
@@ -510,8 +511,8 @@ window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":
               <text x="60" y="74" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" fill="currentColor" letter-spacing="1">SMRL · ZURICH</text>
             </g>
           </svg>
-          <h3>Inquiry received.</h3>
-          <p>Given our commitment to slowness, expect a reply within 3–5 business days — which by league standards is lightning fast.</p>
+          <h3>You're on the register.</h3>
+          <p id="formSuccessDetail">Season registration confirmed. A league postcard number will follow by post.</p>
         </div>
       </div>
     </div>
@@ -627,7 +628,7 @@ window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":
     </div>
     <div class="foot-bottom">
       <span>© 2025 Snail Mail Racing League · Zurich</span>
-      <span><a href="/contact.html">Privacy &amp; inquiries</a></span>
+      <span><a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></span>
     </div>
   </div>
 </footer>

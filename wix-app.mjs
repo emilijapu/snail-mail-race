@@ -8,9 +8,8 @@ import {
   fetchHof,
   fetchTestimonials,
   fetchBlogPosts,
-  wireForm,
 } from "./wix-render.mjs";
-import { wireEventRsvp } from "./wix-events.mjs";
+import { wireEventRsvp, wireSeasonRegistration } from "./wix-events.mjs";
 import { client } from "./wix-client.mjs";
 
 async function loadEvents() {
@@ -27,7 +26,7 @@ async function loadEvents() {
 }
 
 async function init() {
-  wireForm();
+  wireSeasonRegistration();
   try {
     const [standings, hof, testimonials, posts] = await Promise.all([
       fetchStandings(8),

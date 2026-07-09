@@ -39,7 +39,7 @@ try {
     collection: {
       id: "MemberRace",
       permissions: {
-        read: "SITE_MEMBER",
+        read: "SITE_MEMBER_AUTHOR",
         insert: "SITE_MEMBER",
         update: "SITE_MEMBER_AUTHOR",
         remove: "SITE_MEMBER_AUTHOR",

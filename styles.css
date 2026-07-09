@@ -335,6 +335,8 @@ table.standings caption{text-align:left;font-family:var(--mono);font-size:11px;c
 .stampok{width:120px;height:120px;margin:0 auto 16px;color:var(--red)}
 .form-success h3{font-size:26px;margin-bottom:8px}
 .form-success p{color:var(--muted);font-weight:500;max-width:38ch;margin:0 auto}
+.form-err{font-family:var(--mono);font-size:12px;color:var(--red);margin:12px 0 0;font-weight:700}
+.form-err[hidden]{display:none}
 
 /* ---------- faq ---------- */
 .faq-list{margin-top:34px;display:grid;gap:14px;max-width:820px}

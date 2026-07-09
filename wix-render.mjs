@@ -250,31 +250,6 @@ export async function fetchBlogPosts(limit = 6) {
   return result.items || result.posts || [];
 }
 
-export function wireForm() {
-  const form = document.getElementById("regForm");
-  if (!form) return;
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    if (form.reportValidity?.() === false) return;
-    const data = {
-      full_name: document.getElementById("f-name").value.trim(),
-      email: document.getElementById("f-email").value.trim(),
-      country: document.getElementById("f-country").value.trim(),
-      preferred_race_format: document.getElementById("f-format").value,
-      message: document.getElementById("f-msg").value.trim(),
-    };
-    try {
-      await client.submissions.createSubmission({ formId: cfg.form.formId, submissions: data });
-      form.style.display = "none";
-      document.getElementById("formSuccess")?.classList.add("show");
-    } catch (err) {
-      console.error("Wix form submit failed", err);
-      alert("Submission failed. Please try again.");
-    }
-  }, true);
-}
-
 export function wireInquiryForm() {
   const form = document.getElementById("contactForm");
   if (!form) return;

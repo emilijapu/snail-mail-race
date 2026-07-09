@@ -81,7 +81,7 @@ export function mountFooter() {
       </div>
       <div class="foot-bottom">
         <span>© 2025 Snail Mail Racing League · Zurich</span>
-        <span><a href="/contact.html">Privacy &amp; inquiries</a></span>
+        <span><a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></span>
       </div>
     </div>`;
 }

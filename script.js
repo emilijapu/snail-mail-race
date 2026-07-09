@@ -256,33 +256,6 @@
   menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){
     menu.classList.remove("open");hamb.setAttribute("aria-expanded","false");});});
 
-  /* ---------- FORM ---------- */
-  var form=document.getElementById("regForm"), success=document.getElementById("formSuccess");
-  function setInvalid(field,bad){field.classList.toggle("invalid",bad);}
-  form.addEventListener("submit",function(e){
-    e.preventDefault();
-    var ok=true;
-    var vName=document.getElementById("f-name").value.trim();
-    var vEmail=document.getElementById("f-email").value.trim();
-    var vCountry=document.getElementById("f-country").value.trim();
-    var vFmt=document.getElementById("f-format").value;
-    [["name",vName!==""],
-     ["email",/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(vEmail)],
-     ["country",vCountry!==""],
-     ["format",vFmt!==""]
-    ].forEach(function(pair){
-      var el=document.getElementById("f-"+pair[0]).closest(".field");
-      setInvalid(el,!pair[1]); if(!pair[1]) ok=false;
-    });
-    if(!ok){ var bad=form.querySelector(".invalid input,.invalid select"); if(bad) bad.focus(); return; }
-    form.style.display="none";
-    success.classList.add("show");
-    success.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
-  });
-  form.querySelectorAll("input,select,textarea").forEach(function(el){
-    el.addEventListener("input",function(){ el.closest(".field").classList.remove("invalid"); });
-  });
-
   /* ---------- STICKY MOBILE JOIN ---------- */
   var sticky=document.getElementById("stickyJoin");
   var heroSec=document.querySelector(".hero");

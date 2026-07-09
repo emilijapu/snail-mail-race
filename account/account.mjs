@@ -26,11 +26,16 @@ function daysSince(iso) {
 
 async function loadRaces() {
   const col = cfg.cms.collections.memberRaces;
-  if (!col) return [];
+  if (!col || !client.auth.loggedIn()) return [];
   try {
-    const { items: rows } = await client.items.query(col).descending("departedAt").limit(20).find();
+    const { items: rows } = await client.items
+      .query(col)
+      .descending("departedAt")
+      .limit(20)
+      .find();
     return rows || [];
-  } catch {
+  } catch (err) {
+    console.warn("MemberRace query failed", err);
     return [];
   }
 }
@@ -90,6 +95,9 @@ async function addRace(e) {
   e.preventDefault();
   const col = cfg.cms.collections.memberRaces;
   if (!col) return;
+  if (!client.auth.loggedIn()) {
+    throw new Error("Log in to log a race entry.");
+  }
   const origin = document.getElementById("r-origin").value.trim();
   const destination = document.getElementById("r-dest").value.trim();
   const season = document.getElementById("r-season").value.trim();

@@ -1,13 +1,49 @@
 import { client } from "./wix-client.mjs";
 
 let activeEvent = null;
+let seasonRegistrationEvent = null;
 
-function splitName(full) {
+export function splitName(full) {
   const parts = (full || "").trim().split(/\s+/);
   return {
     firstName: parts[0] || "Member",
     lastName: parts.slice(1).join(" ") || "Racer",
   };
+}
+
+function eventId(ev) {
+  return ev?._id || ev?.id;
+}
+
+export async function fetchUpcomingEvents(limit = 20) {
+  const result = await client.wixEventsV2.queryEvents({ limit });
+  return result.events || result.items || [];
+}
+
+/** Primary season signup event — Mail-Off or first open RSVP fixture. */
+export function pickSeasonRegistrationEvent(events) {
+  return (
+    events.find((e) => /mail-off/i.test(e.title || ""))
+    || events.find((e) => {
+      const type = e.registration?.initialType || e.registration?.type;
+      return type === "RSVP" && /season/i.test(e.title || "");
+    })
+    || events.find((e) => (e.registration?.initialType || e.registration?.type) === "RSVP")
+    || null
+  );
+}
+
+async function prefillMemberFields(nameEl, emailEl) {
+  if (!client.auth.loggedIn() || !nameEl || !emailEl) return;
+  try {
+    const { member } = await client.members.getCurrentMember({ fieldsets: ["FULL"] });
+    const nick = member?.profile?.nickname || "";
+    const loginEmail = member?.loginEmail || "";
+    if (nick) nameEl.value = nick;
+    if (loginEmail) emailEl.value = loginEmail;
+  } catch {
+    /* optional prefill */
+  }
 }
 
 async function prefillGuest() {
@@ -30,6 +66,33 @@ async function prefillGuest() {
   }
 }
 
+async function prefillRegForm() {
+  await prefillMemberFields(
+    document.getElementById("f-name"),
+    document.getElementById("f-email"),
+  );
+}
+
+async function createEventRsvp(ev, { firstName, lastName, email, extraInputValues = [] }) {
+  const id = eventId(ev);
+  if (!id) throw new Error("Event not available for registration.");
+
+  const body = { eventId: id, firstName, lastName, email, status: "YES" };
+  if (extraInputValues.length) {
+    body.form = { inputValues: extraInputValues };
+  }
+
+  try {
+    return await client.rsvpV2.createRsvp(body);
+  } catch (ex) {
+    if (extraInputValues.length) {
+      const { form, ...rest } = body;
+      return await client.rsvpV2.createRsvp(rest);
+    }
+    throw ex;
+  }
+}
+
 export function openRsvpModal(event) {
   activeEvent = event;
   const modal = document.getElementById("rsvpModal");
@@ -46,7 +109,7 @@ export function openRsvpModal(event) {
 
 async function submitRsvp(e) {
   e.preventDefault();
-  if (!activeEvent?._id) return;
+  if (!activeEvent) return;
   const firstName = document.getElementById("rsvpFirst")?.value.trim();
   const lastName = document.getElementById("rsvpLast")?.value.trim();
   const email = document.getElementById("rsvpEmail")?.value.trim();
@@ -55,20 +118,13 @@ async function submitRsvp(e) {
   const ok = document.getElementById("rsvpSuccess");
   if (err) { err.hidden = true; err.textContent = ""; }
   try {
-    const rsvp = await client.rsvpV2.createRsvp({
-      eventId: activeEvent._id,
-      firstName,
-      lastName,
-      email,
-      status: "YES",
-    });
+    const rsvp = await createEventRsvp(activeEvent, { firstName, lastName, email });
     if (form) form.hidden = true;
     if (ok) {
       ok.hidden = false;
-      const msg = rsvp?.status === "WAITLIST"
+      ok.textContent = rsvp?.status === "WAITLIST"
         ? "You are on the waitlist. We will write when a seat opens — no rush."
         : "RSVP confirmed. Your name is on the register. See you at the mail-off.";
-      ok.textContent = msg;
     }
   } catch (ex) {
     if (err) {
@@ -76,6 +132,86 @@ async function submitRsvp(e) {
       err.textContent = ex?.message || "Registration failed. The window may be closed, or this email is already registered.";
     }
   }
+}
+
+async function submitSeasonRegistration(e) {
+  e.preventDefault();
+  e.stopImmediatePropagation();
+
+  const form = document.getElementById("regForm");
+  const success = document.getElementById("formSuccess");
+  const err = document.getElementById("regErr");
+  if (!form) return;
+  if (form.reportValidity?.() === false) return;
+
+  if (err) { err.hidden = true; err.textContent = ""; }
+
+  let ev = seasonRegistrationEvent;
+  if (!ev) {
+    try {
+      ev = pickSeasonRegistrationEvent(await fetchUpcomingEvents());
+    } catch {
+      /* fall through */
+    }
+  }
+  if (!ev) {
+    if (err) {
+      err.hidden = false;
+      err.textContent = "Season registration is not open yet. Try again after the next mail-off is published.";
+    }
+    return;
+  }
+
+  const fullName = document.getElementById("f-name")?.value.trim();
+  const email = document.getElementById("f-email")?.value.trim();
+  const country = document.getElementById("f-country")?.value.trim();
+  const format = document.getElementById("f-format")?.value.trim();
+  const message = document.getElementById("f-msg")?.value.trim();
+  const { firstName, lastName } = splitName(fullName);
+
+  const extraInputValues = [];
+  if (country) extraInputValues.push({ inputName: "country", value: country });
+  if (format) extraInputValues.push({ inputName: "preferred_race_format", value: format });
+  if (message) extraInputValues.push({ inputName: "message", value: message });
+
+  try {
+    const rsvp = await createEventRsvp(ev, { firstName, lastName, email, extraInputValues });
+    form.style.display = "none";
+    if (success) {
+      success.classList.add("show");
+      const note = document.getElementById("formSuccessDetail");
+      if (note) {
+        const eventTitle = ev.title || "the current season";
+        note.textContent = rsvp?.status === "WAITLIST"
+          ? `You are waitlisted for ${eventTitle}. We will write when a seat opens.`
+          : `You are registered for ${eventTitle}. A league postcard number will follow by post.`;
+      }
+    }
+  } catch (ex) {
+    if (err) {
+      err.hidden = false;
+      err.textContent = ex?.message || "Registration failed. The window may be closed, or this email is already registered.";
+    }
+  }
+}
+
+export async function wireSeasonRegistration() {
+  const form = document.getElementById("regForm");
+  if (!form) return;
+
+  try {
+    const events = await fetchUpcomingEvents();
+    seasonRegistrationEvent = pickSeasonRegistrationEvent(events);
+    const label = document.getElementById("seasonEventLabel");
+    if (label) {
+      label.textContent = seasonRegistrationEvent?.title || "the next season mail-off";
+    }
+  } catch {
+    /* static label remains */
+  }
+
+  await prefillRegForm();
+  form.addEventListener("submit", submitSeasonRegistration, true);
 }
 
 export function wireEventRsvp() {

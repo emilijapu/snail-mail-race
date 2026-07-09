@@ -10,7 +10,7 @@ import {
   fetchBlogPosts,
 } from "./wix-render.mjs";
 import { wireEventRsvp, wireSeasonRegistration } from "./wix-events.mjs";
-import { client } from "./wix-client.mjs";
+import { client, ensureAuthReady } from "./wix-client.mjs";
 
 async function loadEvents() {
   try {
@@ -26,6 +26,7 @@ async function loadEvents() {
 }
 
 async function init() {
+  await ensureAuthReady();
   wireSeasonRegistration();
   try {
     const [standings, hof, testimonials, posts] = await Promise.all([
@@ -45,4 +46,17 @@ async function init() {
   window.__wixReady = true;
 }
 
-init();
+function scheduleInit() {
+  const run = () => { init(); };
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(run, { timeout: 2500 });
+  } else {
+    setTimeout(run, 1);
+  }
+}
+
+if (document.readyState === "complete") {
+  scheduleInit();
+} else {
+  window.addEventListener("load", scheduleInit, { once: true });
+}

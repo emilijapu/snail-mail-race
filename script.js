@@ -205,10 +205,17 @@
       +'</svg>';
   }
   var railPrev=document.getElementById("hofPrev"), railNext=document.getElementById("hofNext");
+  var railStep=320;
+  function measureRailStep(){
+    var card=rail&&rail.querySelector(".hof-card");
+    if(card) railStep=card.getBoundingClientRect().width+22;
+  }
+  if(rail){
+    measureRailStep();
+    window.addEventListener("resize",measureRailStep);
+  }
   function scrollRail(dir){
-    var card=rail.querySelector(".hof-card");
-    var w=card?card.getBoundingClientRect().width+22:320;
-    rail.scrollBy({left:dir*w,behavior:reduce?"auto":"smooth"});
+    rail.scrollBy({left:dir*railStep,behavior:reduce?"auto":"smooth"});
   }
   if(railPrev) railPrev.addEventListener("click",function(){scrollRail(-1);});
   if(railNext) railNext.addEventListener("click",function(){scrollRail(1);});

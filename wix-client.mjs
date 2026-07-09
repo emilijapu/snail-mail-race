@@ -43,4 +43,24 @@ export function imgSrc(v, w = 120, h = 120) {
   return typeof v === "string" ? v : v?.url ?? "";
 }
 
+/** Prime visitor OAuth once so parallel CMS/blog calls don't each fetch a token. */
+export async function ensureAuthReady() {
+  if (client.auth.loggedIn()) return;
+  try {
+    if (typeof client.auth.generateVisitorTokens === "function") {
+      await client.auth.generateVisitorTokens();
+      return;
+    }
+  } catch {
+    /* fall through */
+  }
+  const col = cfg.cms?.collections?.standings;
+  if (!col) return;
+  try {
+    await client.items.query(col).limit(1).find();
+  } catch {
+    /* first API call still warms auth */
+  }
+}
+
 loadTokens();

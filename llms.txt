@@ -2,14 +2,21 @@
 
 > Competitive postal racing: the slowest delivery wins. Global league for mail-art hobbyists and geography nerds.
 
+The world's only competitive league for slow postal delivery. Mail identical postcards through the slowest routes you can find.
+
 ## Key pages
 
-- [Home](/): League overview and registration
-- [Current Season](/standings.html): Live standings table
-- [Hall of Fame](/hall-of-fame.html): Legendary slow deliveries
-- [Race Rules](/rules.html): Official rule book
-- [The Gazette](/blog.html): Race reports and route analysis
-- [Contact](/contact.html): League HQ inquiries
+- [Home](https://snail-mail-b67e59f5-emilijap8.wix-site-host.com/): League overview and registration
+- [Current Season](https://snail-mail-b67e59f5-emilijap8.wix-site-host.com/standings.html): Live standings table
+- [Hall of Fame](https://snail-mail-b67e59f5-emilijap8.wix-site-host.com/hall-of-fame.html): Legendary slow deliveries
+- [Race Rules](https://snail-mail-b67e59f5-emilijap8.wix-site-host.com/rules.html): Official rule book
+- [The Gazette](https://snail-mail-b67e59f5-emilijap8.wix-site-host.com/blog.html): Race reports and route analysis
+- [Contact](https://snail-mail-b67e59f5-emilijap8.wix-site-host.com/contact.html): League HQ inquiries
+
+## AI agent access
+
+- [Wix site MCP endpoint](https://snail-mail-b67e59f5-emilijap8.wix-site-host.com/_api/mcp): Live site content for MCP-compatible agents
+- [Wix MCP documentation](https://dev.wix.com/docs/develop-websites/articles/get-started/about-the-wix-site-mcp): How to connect and use site MCP tools
 
 ## Usage
 

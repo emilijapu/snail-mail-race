@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact League HQ — Snail Mail Racing League</title>
+<meta name="description" content="League HQ in Zurich — inquiries, registration questions, and general correspondence." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<script>
+window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":"5b263943-273d-425f-b980-0eb2873c2864","cms":{"collections":{"standings":"StandingsRow","hallOfFame":"LegendaryDelivery","testimonials":"MemberTestimonial","memberRaces":"MemberRace"}},"form":{"formId":"121851fd-1c38-4a16-9047-cd9281657eea","targets":["full_name","email","country","preferred_race_format","message"]}};
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Snail Mail Racing League","email":"league@snailmailracing.org","telephone":"+41 44 301 7890","address":{"@type":"PostalAddress","streetAddress":"Bahnhofstrasse 12","postalCode":"8001","addressLocality":"Zurich","addressCountry":"CH"}}
+</script>
+</head>
+<body data-page="contact">
+
+<header id="site-header"></header>
+
+<main class="section page-main">
+  <div class="wrap">
+    <span class="eyebrow">Form 14-A · General Inquiry</span>
+    <h1 class="section-title">Contact league HQ</h1>
+    <p class="section-lede">Questions about routes, registration, or press enquiries. We reply in due course — never ahead of schedule.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h2>League HQ</h2>
+        <p><a href="mailto:league@snailmailracing.org">league@snailmailracing.org</a></p>
+        <p><a href="tel:+41443017890">+41 44 301 7890</a></p>
+        <p>Bahnhofstrasse 12<br>8001 Zurich, Switzerland</p>
+        <p class="ref">Mon–Fri 9:00–17:00 CET · est. 2012</p>
+      </div>
+
+      <div class="form-body contact-form-wrap">
+        <form id="regForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-country">Country <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-country" name="country" type="text" autocomplete="country-name" required />
+            </div>
+            <div class="field">
+              <label for="f-format">Preferred race format <span class="req" aria-hidden="true">*</span></label>
+              <select id="f-format" name="preferredRaceFormat" required>
+                <option value="">Select a format…</option>
+                <option>Open Corridor</option>
+                <option>Fixed Terminus</option>
+                <option>Return to Sender</option>
+                <option>Undecided — surprise me</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg">Message <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+            <textarea id="f-msg" name="message" placeholder="Your inquiry or registration note."></textarea>
+          </div>
+          <p class="reassure">We only use your email to respond to this inquiry. No newsletters unless you opt in.</p>
+          <button type="submit" class="btn btn--lg" style="width:100%">Send inquiry</button>
+        </form>
+        <div class="form-success" id="formSuccess" role="status">
+          <h3>Inquiry received.</h3>
+          <p>Given our commitment to slowness, expect a reply within 3–5 business days — which by league standards is lightning fast.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+<script type="module" src="site.mjs"></script>
+<script type="module" src="pages/contact.mjs"></script>
+</body>
+</html>

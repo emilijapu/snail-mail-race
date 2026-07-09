@@ -125,6 +125,10 @@ async function seedCMS() {
     { title: "The Chagos Loop", origin: "Diego Garcia", destination: "Nuuk", routeVia: "via Mauritius, Réunion, Marseille", transitDays: 1774, season: "Season 8", memberHandle: "@indian_ocean_ivan", story: "Delayed indefinitely by the absence of any civilian postal route off the atoll." },
     { title: "The Sealed Sack", origin: "Tristan da Cunha", destination: "Ulaanbaatar", routeVia: "via Cape Town, Rotterdam", transitDays: 1655, season: "Season 6", memberHandle: "@remotest_regina", story: "Mailed from the most remote inhabited island on earth." },
     { title: "The Frozen Ledger", origin: "McMurdo", destination: "Valletta", routeVia: "via Christchurch, Singapore", transitDays: 1499, season: "Season 9", memberHandle: "@antarctic_archie", story: "Held over an entire austral winter when the last flight departed six hours early." },
+    { title: "The Baltic Braid", origin: "Riga", destination: "Hobart", routeVia: "via Kaliningrad, Åland, Murmansk", transitDays: 1388, season: "Season 10", memberHandle: "@baltic_bureau", story: "Diverted north through Murmansk during a Baltic ice event and sat in a heated depot for eleven months." },
+    { title: "The Sahel Switchback", origin: "Bamako", destination: "Reykjavík", routeVia: "via Nouakchott, Canary Islands", transitDays: 1262, season: "Season 11", memberHandle: "@sahel_slow", story: "Crossed the Sahara by surface sack, then waited two seasons for a northbound fishing-vessel mail contract." },
+    { title: "The Coral Triangle", origin: "Palau", destination: "Monaco", routeVia: "via Papua New Guinea, Timor-Leste", transitDays: 1155, season: "Season 12", memberHandle: "@reef_router", story: "Mis-sorted in Port Moresby and toured three island hubs before a Mediterranean feeder flight." },
+    { title: "The Ross Dependency Run", origin: "Scott Base", destination: "Thimphu", routeVia: "via Christchurch, Mumbai", transitDays: 1089, season: "Season 13", memberHandle: "@ice_mail", story: "Wintered at McMurdo, then spent nine months in a Mumbai customs queue with ambiguous paperwork." },
   ];
 
   const testimonials = [
@@ -206,6 +210,9 @@ async function seedBlog() {
     { title: "Why the Azores sorting facility is every racer's best friend", excerpt: "The Ponta Delgada regional hub has delayed more league postcards than any other facility on earth." },
     { title: "Season 13 in review: the year of the mislabelled sack", excerpt: "A single clerical error in Panama rerouted eleven entries and reshaped the standings." },
     { title: "The postmaster of Pitcairn on patience, rats, and rubber stamps", excerpt: "The island's sole postal clerk has hand-cancelled more league legends than anyone alive." },
+    { title: "Letter from the sorting clerk of Ascension Island", excerpt: "A firsthand account of holding league mail during a cargo drought that lasted nineteen months." },
+    { title: "Five routes that look fast but aren't", excerpt: "Capital-to-capital shortcuts that disqualify, and the obscure corridors that don't." },
+    { title: "Season 14 midpoint: who's still in the post?", excerpt: "At the halfway mark, 612 cards remain in transit. We rank the corridors doing the most work." },
   ];
 
   await api("POST", "/blog/v3/bulk/draft-posts/create", {

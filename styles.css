@@ -392,4 +392,14 @@ footer{background:var(--ink);color:var(--paper);padding-block:56px 30px}
   body{padding-bottom:76px}
   .hof-card{flex-basis:280px}
   .stamp-wm{width:96px;height:96px}
+  .contact-grid{grid-template-columns:1fr}
 }
+
+/* ---------- subpages ---------- */
+.page-main{padding-block:clamp(48px,7vw,96px)}
+.hof-page-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:36px}
+.hof-card--grid{flex:none;display:flex;flex-direction:column}
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:28px;margin-top:36px;align-items:start}
+.contact-card{background:var(--paper);border:var(--bd);border-radius:16px;padding:28px;box-shadow:var(--sh)}
+.contact-card h2{font-size:22px;margin-bottom:16px}
+.contact-form-wrap{background:var(--paper);border:var(--bd);border-radius:16px;padding:28px;box-shadow:var(--sh)}

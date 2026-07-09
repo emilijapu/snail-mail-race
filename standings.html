@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Current Season Standings — Snail Mail Racing League</title>
+<meta name="description" content="Live standings for Season 14 — postcards in transit ranked by days since departure." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<script>
+window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":"5b263943-273d-425f-b980-0eb2873c2864","cms":{"collections":{"standings":"StandingsRow","hallOfFame":"LegendaryDelivery","testimonials":"MemberTestimonial","memberRaces":"MemberRace"}},"form":{"formId":"121851fd-1c38-4a16-9047-cd9281657eea","targets":["full_name","email","country","preferred_race_format","message"]}};
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SportsEvent","name":"Snail Mail Racing League Season 14","sport":"Competitive postal racing","organizer":{"@type":"SportsOrganization","name":"Snail Mail Racing League"}}
+</script>
+</head>
+<body data-page="standings">
+
+<header id="site-header"></header>
+
+<main class="section section--tint page-main">
+  <div class="wrap">
+    <span class="eyebrow">Annex III · Season 14 Register</span>
+    <h1 class="section-title">Current season standings</h1>
+    <p class="section-lede">Ranked by days in transit — highest is best. Cards confirmed arrived are, sadly, out of the running.</p>
+
+    <div class="table-frame">
+      <div class="table-scroll">
+        <table class="standings" id="standingsTable">
+          <caption>Official league register · leader = slowest still in transit</caption>
+          <thead>
+            <tr>
+              <th scope="col">Rk</th>
+              <th scope="col">Member</th>
+              <th scope="col">Origin</th>
+              <th scope="col">Destination</th>
+              <th scope="col">Days in transit</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody id="standingsBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <p class="ref" id="standingsMeta" style="margin-top:16px">Loading register…</p>
+    <p style="margin-top:24px"><a href="/#register" class="btn">Register for this season</a></p>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+<script type="module" src="site.mjs"></script>
+<script type="module" src="pages/standings.mjs"></script>
+</body>
+</html>

@@ -205,15 +205,11 @@
       +'</svg>';
   }
   var railPrev=document.getElementById("hofPrev"), railNext=document.getElementById("hofNext");
-  var railStep=320;
-  function measureRailStep(){
-    var card=rail&&rail.querySelector(".hof-card");
-    if(card) railStep=card.getBoundingClientRect().width+22;
-  }
-  if(rail){
-    measureRailStep();
-    window.addEventListener("resize",measureRailStep);
-  }
+  var railMq=window.matchMedia("(max-width:760px)");
+  var railStep=railMq.matches?302:362;
+  function updateRailStep(){ railStep=railMq.matches?302:362; }
+  if(railMq.addEventListener) railMq.addEventListener("change",updateRailStep);
+  else railMq.addListener(updateRailStep);
   function scrollRail(dir){
     rail.scrollBy({left:dir*railStep,behavior:reduce?"auto":"smooth"});
   }

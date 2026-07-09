@@ -36,7 +36,8 @@ export function pickSeasonRegistrationEvent(events) {
 async function prefillMemberFields(nameEl, emailEl) {
   if (!client.auth.loggedIn() || !nameEl || !emailEl) return;
   try {
-    const { member } = await client.members.getCurrentMember({ fieldsets: ["FULL"] });
+    const { getCurrentMember } = await import("./wix-members.mjs");
+    const { member } = await getCurrentMember({ fieldsets: ["FULL"] });
     const nick = member?.profile?.nickname || "";
     const loginEmail = member?.loginEmail || "";
     if (nick) nameEl.value = nick;
@@ -52,7 +53,8 @@ async function prefillGuest() {
   const email = document.getElementById("rsvpEmail");
   if (!client.auth.loggedIn()) return;
   try {
-    const { member } = await client.members.getCurrentMember({ fieldsets: ["FULL"] });
+    const { getCurrentMember } = await import("./wix-members.mjs");
+    const { member } = await getCurrentMember({ fieldsets: ["FULL"] });
     const nick = member?.profile?.nickname || "";
     const loginEmail = member?.loginEmail || "";
     if (nick) {
@@ -195,12 +197,12 @@ async function submitSeasonRegistration(e) {
   }
 }
 
-export async function wireSeasonRegistration() {
+export async function wireSeasonRegistration(cachedEvents = null) {
   const form = document.getElementById("regForm");
   if (!form) return;
 
   try {
-    const events = await fetchUpcomingEvents();
+    const events = cachedEvents ?? await fetchUpcomingEvents();
     seasonRegistrationEvent = pickSeasonRegistrationEvent(events);
     const label = document.getElementById("seasonEventLabel");
     if (label) {

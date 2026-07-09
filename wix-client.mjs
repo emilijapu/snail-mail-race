@@ -2,14 +2,13 @@ import { createClient, OAuthStrategy, media } from "https://esm.sh/@wix/sdk@1.15
 import { items } from "https://esm.sh/@wix/data@1.0.285";
 import { posts } from "https://esm.sh/@wix/blog@1.0.488";
 import { wixEventsV2, rsvpV2 } from "https://esm.sh/@wix/events@1.0.500";
-import { members } from "https://esm.sh/@wix/members@1.0.102";
 
 const TOKEN_KEY = "smrl_wix_tokens";
 
 export const cfg = window.WIX_CONFIG;
 
 export const client = createClient({
-  modules: { items, posts, wixEventsV2, rsvpV2, members },
+  modules: { items, posts, wixEventsV2, rsvpV2 },
   auth: OAuthStrategy({ clientId: cfg.clientId }),
 });
 
@@ -44,8 +43,19 @@ export function imgSrc(v, w = 120, h = 120) {
 }
 
 /** Prime visitor OAuth once so parallel CMS/blog calls don't each fetch a token. */
-export async function ensureAuthReady() {
-  if (client.auth.loggedIn()) return;
+let authReadyPromise = null;
+
+export function ensureAuthReady() {
+  if (client.auth.loggedIn()) {
+    return authReadyPromise || Promise.resolve();
+  }
+  if (!authReadyPromise) {
+    authReadyPromise = warmVisitorAuth();
+  }
+  return authReadyPromise;
+}
+
+async function warmVisitorAuth() {
   try {
     if (typeof client.auth.generateVisitorTokens === "function") {
       await client.auth.generateVisitorTokens();

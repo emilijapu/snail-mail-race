@@ -1,4 +1,5 @@
 import { client, cfg, clearTokens, saveTokens, imgSrc } from "../wix-client.mjs";
+import { getCurrentMember } from "../wix-members.mjs";
 
 const guestView = document.getElementById("guestView");
 const memberView = document.getElementById("memberView");
@@ -71,7 +72,7 @@ function renderRaces(rows) {
 }
 
 async function showMember() {
-  const { member } = await client.members.getCurrentMember({ fieldsets: ["FULL"] });
+  const { member } = await getCurrentMember({ fieldsets: ["FULL"] });
   const profile = member?.profile || {};
   const name = profile.nickname || member?.loginEmail?.split("@")[0] || "Member";
   document.getElementById("displayName").textContent = name;

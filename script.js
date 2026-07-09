@@ -63,7 +63,7 @@
       +'<text x="100" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#EE3B2F">ZURICH·CH</text>'
       +'</svg>';
   }
-  var wmLabels = {transit:"IN TRANSIT",how:"PROCEDURE",standings:"OFFICIAL REGISTER",rules:"RULE BOOK",
+  var wmLabels = {transit:"IN TRANSIT",how:"PROCEDURE",
     "hall-of-fame":"THE ARCHIVE",gazette:"THE GAZETTE",register:"FORM 14-B"};
   document.querySelectorAll("[id]").forEach(function(sec){
     var wm = sec.querySelector(":scope > .stamp-wm");
@@ -71,6 +71,8 @@
   });
   var ctaWm = document.querySelector(".cta-band .stamp-wm");
   if(ctaWm) ctaWm.innerHTML = stampSVG("SEASON 14");
+  var seamSeal = document.querySelector(".seam-seal");
+  if(seamSeal) seamSeal.innerHTML = stampSVG("OFFICIAL SEAL");
 
   /* ---------- HERO TYPING ---------- */
   var head = document.getElementById("heroHead");

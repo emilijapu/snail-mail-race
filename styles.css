@@ -62,7 +62,7 @@ h1,h2,h3,h4{font-family:var(--disp);line-height:1.02;letter-spacing:-.02em;font-
 
 /* ---------- layout ---------- */
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
-.section{padding-block:var(--sec);position:relative;overflow:hidden}
+.section{padding-block:var(--sec);position:relative;overflow:visible}
 .section--tint{background:var(--paper);border-block:var(--bd)}
 .section--dark{background:var(--ink);color:var(--paper)}
 .section + .section--tint{border-top:var(--bd)}
@@ -72,6 +72,18 @@ h1,h2,h3,h4{font-family:var(--disp);line-height:1.02;letter-spacing:-.02em;font-
   filter:drop-shadow(4px 4px 0 rgba(20,18,16,.9));transform:rotate(-9deg)}
 .stamp-wm svg{width:100%;height:100%}
 .section > .wrap{position:relative;z-index:1}
+
+/* single whole seal on the register (standings) → rule book (rules) boundary */
+.seam{
+  position:relative;z-index:4;height:0;margin:0;pointer-events:none;
+}
+.seam-seal{
+  position:absolute;top:0;right:clamp(20px,6vw,72px);
+  width:clamp(122px,17vw,168px);aspect-ratio:1;
+  transform:translateY(-50%) rotate(-8deg);
+  filter:drop-shadow(5px 5px 0 rgba(20,18,16,.9));z-index:4;
+}
+.seam-seal svg{width:100%;height:100%}
 
 /* ---------- buttons ---------- */
 .btn{

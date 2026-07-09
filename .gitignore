@@ -2,6 +2,10 @@
 *.log
 .env
 .env.*
-node_modules/
+.cursor/
 dist/
 .cache/
+node_modules/
+bootstrap.mjs
+wix-handoff.json
+files.zip

@@ -4,6 +4,24 @@ The world's only competitive league for slow postal delivery. Mail an identical 
 
 **HEADLESS DAY** · spec-0324
 
+## Live site
+
+**https://snail-mail-b67e59f5-emilijap8.wix-site-host.com**
+
+Dashboard: https://manage.wix.com/dashboard/
+
+## Wix Headless
+
+Connected Business Solutions:
+
+- **Wix Data (CMS)** — standings, hall of fame, member testimonials
+- **Wix Forms** — league registration
+- **Wix Blog** — The Gazette posts
+- **Wix Events** — season mail-offs and galas (RSVP)
+- **Wix Members** — member area (app installed)
+
+SDK wiring: `wix-app.mjs` · config: `wix-handoff.json` · seed: `node scripts/seed-wix.mjs`
+
 ## Run locally
 
 Open `index.html` in a browser, or serve the folder:

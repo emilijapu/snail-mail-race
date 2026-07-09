@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Account — Snail Mail Racing League</title>
+<meta name="description" content="Member login, race history, and active postcards in transit for the Snail Mail Racing League." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="account/account.css" />
+<script>
+window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":"5b263943-273d-425f-b980-0eb2873c2864","cms":{"collections":{"standings":"StandingsRow","hallOfFame":"LegendaryDelivery","testimonials":"MemberTestimonial","memberRaces":"MemberRace"}},"form":{"formId":"121851fd-1c38-4a16-9047-cd9281657eea","targets":["full_name","email","country","preferred_race_format","message"]}};
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Snail Mail Racing League home">
+      <span class="crest" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none"><g stroke="#141210" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M34 62 c-8 0 -13 -6 -13 -14 c0 -10 9 -18 20 -18 c11 0 19 8 19 18 c0 6 -5 11 -11 11 c-5 0 -9 -4 -9 -9 c0 -4 3 -6 6 -6"/><path d="M34 62 h24"/><path d="M58 55 l8 -16 M64 39 l4 3 M60 40 l4 3"/></g></svg>
+      </span>
+      <span><span class="bt">Snail Mail Racing League</span><span class="bs">Member Register</span></span>
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="/#standings">Standings</a>
+      <a href="/#rules">Rules</a>
+      <a href="/#hall-of-fame">Hall of Fame</a>
+      <a href="/account.html" aria-current="page">My Account</a>
+    </nav>
+    <a href="/#register" class="btn nav-join">Join the league</a>
+  </div>
+</header>
+
+<main class="section account-page">
+  <div class="wrap">
+    <span class="eyebrow">Form 14-C · Member Register</span>
+    <h1 class="section-title">My account</h1>
+    <p class="section-lede">Race history, active postcards in transit, and season stats — for verified members only.</p>
+
+    <div id="guestView" class="account-card" hidden>
+      <h2>Sign in to view your races</h2>
+      <p>Log in with your league member account to see postcards in transit and past season entries. New members can register on the Wix login page — it is the same flow.</p>
+      <button type="button" class="btn btn--lg" id="loginBtn">Log in / Sign up</button>
+      <p class="ref" style="margin-top:16px">No account yet? <a href="/#register" class="linkarrow">Join the league first</a></p>
+    </div>
+
+    <div id="memberView" hidden>
+      <div class="account-grid">
+        <section class="account-card profile-card">
+          <img id="avatar" class="avatar" alt="" width="88" height="88" hidden />
+          <div>
+            <h2 id="displayName">Member</h2>
+            <p id="memberEmail" class="muted"></p>
+            <p id="memberSince" class="ref"></p>
+            <button type="button" class="btn btn--ghost" id="logoutBtn" style="margin-top:14px">Log out</button>
+          </div>
+        </section>
+
+        <section class="account-card stats-card">
+          <h3>Season stats</h3>
+          <ul class="stat-list">
+            <li><b id="statSeasons">—</b><span>seasons competed</span></li>
+            <li><b id="statTransit">—</b><span>postcards in transit</span></li>
+            <li><b id="statBest">—</b><span>longest active transit (days)</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="account-card" style="margin-top:22px">
+        <h3>Active postcards in transit</h3>
+        <p class="muted" style="margin-bottom:16px">Entries tied to your member account. Empty is normal for a new racer.</p>
+        <div class="table-frame">
+          <div class="table-scroll">
+            <table class="standings account-table">
+              <thead>
+                <tr>
+                  <th scope="col">Route</th>
+                  <th scope="col">Season</th>
+                  <th scope="col">Days in transit</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody id="raceBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <p id="raceEmpty" class="ref" hidden>No active entries yet. <a href="/#register">Register for this season</a>.</p>
+      </section>
+    </div>
+
+    <p id="loadErr" class="err" style="display:none;margin-top:16px"></p>
+  </div>
+</main>
+
+<footer id="contact" style="margin-top:40px">
+  <div class="wrap">
+    <div class="foot-bottom" style="border-top:none;padding-top:0">
+      <span>© 2025 Snail Mail Racing League</span>
+      <span><a href="/">← Back to league home</a></span>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="account/account.mjs"></script>
+</body>
+</html>

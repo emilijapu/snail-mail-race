@@ -1,0 +1,33 @@
+.account-page { padding-block: clamp(40px, 6vw, 80px); }
+.account-card {
+  background: var(--paper);
+  border: var(--bd);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--sh);
+}
+.account-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 22px;
+  margin-top: 28px;
+}
+.profile-card { display: flex; gap: 20px; align-items: flex-start; }
+.avatar {
+  width: 88px; height: 88px; border-radius: 50%;
+  border: var(--bd); object-fit: cover; background: var(--lime);
+}
+.muted { color: var(--muted); font-weight: 500; }
+.stat-list { list-style: none; display: grid; gap: 14px; margin-top: 12px; }
+.stat-list li { display: flex; align-items: baseline; gap: 12px; }
+.stat-list b {
+  font-family: var(--disp); font-weight: 800; font-size: 28px;
+  background: var(--yellow); border: 2px solid var(--ink); border-radius: 8px;
+  padding: 0 10px; box-shadow: 2px 2px 0 var(--ink); min-width: 52px; text-align: center;
+}
+.stat-list span { font-size: 14px; color: var(--muted); }
+.account-table { min-width: 520px; }
+@media (max-width: 760px) {
+  .account-grid { grid-template-columns: 1fr; }
+  .profile-card { flex-direction: column; align-items: center; text-align: center; }
+}

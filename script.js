@@ -154,16 +154,23 @@
     requestAnimationFrame(step);
   }
   var cuDone=false;
+  function runCountUp(){
+    document.querySelectorAll(".cu").forEach(countUp);
+  }
   var cuObs=new IntersectionObserver(function(ents){
     ents.forEach(function(e){
       if(e.isIntersecting && !cuDone){
         cuDone=true;
-        document.querySelectorAll(".cu").forEach(countUp);
+        runCountUp();
       }
     });
   },{threshold:.3});
   var stTable=document.getElementById("standingsTable");
   if(stTable) cuObs.observe(stTable);
+  window.addEventListener("wix:standings-rendered", function(){
+    cuDone=false;
+    runCountUp();
+  });
 
   /* ---------- HALL OF FAME ---------- */
   var rail = document.getElementById("hofRail");

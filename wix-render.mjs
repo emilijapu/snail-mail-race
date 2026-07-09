@@ -72,9 +72,8 @@ export function renderHofRail(rows) {
   if (!rail || !rows.length) return;
   rail.innerHTML = "";
   rows.forEach((h) => {
-    const card = document.createElement("article");
+    const card = document.createElement("li");
     card.className = "hof-card";
-    card.setAttribute("role", "listitem");
     card.innerHTML = hofCardHtml(h);
     rail.appendChild(card);
   });
@@ -85,7 +84,7 @@ export function renderHofGrid(rows, gridId = "hofGrid") {
   if (!grid || !rows.length) return;
   grid.innerHTML = "";
   rows.forEach((h) => {
-    const card = document.createElement("article");
+    const card = document.createElement("li");
     card.className = "hof-card hof-card--grid";
     card.innerHTML = hofCardHtml(h);
     grid.appendChild(card);

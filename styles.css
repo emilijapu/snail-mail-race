@@ -250,7 +250,7 @@ table.standings caption{text-align:left;font-family:var(--mono);font-size:11px;c
 .hof-controls button{width:52px;height:52px;border:var(--bd);border-radius:50%;background:var(--lime);
   display:grid;place-items:center;box-shadow:var(--sh-sm);transition:transform .08s ease,box-shadow .08s ease}
 .hof-controls button:hover{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
-.hof-rail{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 4px 24px;scrollbar-width:thin}
+.hof-rail{list-style:none;margin:0;display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 4px 24px;scrollbar-width:thin}
 .hof-card{scroll-snap-align:start;flex:0 0 340px;background:var(--paper);border:var(--bd);border-radius:16px;
   box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column}
 .hof-card .pcwrap{background:var(--bg);border-bottom:var(--bd);padding:18px}
@@ -411,7 +411,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:56px 30px}
 
 /* ---------- subpages ---------- */
 .page-main{padding-block:clamp(48px,7vw,96px)}
-.hof-page-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:36px}
+.hof-page-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:36px}
 .hof-card--grid{flex:none;display:flex;flex-direction:column}
 .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:28px;margin-top:36px;align-items:start}
 .contact-card{background:var(--paper);border:var(--bd);border-radius:16px;padding:28px;box-shadow:var(--sh)}

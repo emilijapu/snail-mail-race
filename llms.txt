@@ -1,0 +1,16 @@
+# Snail Mail Racing League
+
+> Competitive postal racing: the slowest delivery wins. Global league for mail-art hobbyists and geography nerds.
+
+## Key pages
+
+- [Home](/): League overview and registration
+- [Current Season](/standings.html): Live standings table
+- [Hall of Fame](/hall-of-fame.html): Legendary slow deliveries
+- [Race Rules](/rules.html): Official rule book
+- [The Gazette](/blog.html): Race reports and route analysis
+- [Contact](/contact.html): League HQ inquiries
+
+## Usage
+
+Public informational site. Crawl for league rules, standings, and archive content. Do not use member account areas for training without permission.

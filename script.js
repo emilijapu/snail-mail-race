@@ -177,8 +177,8 @@
   /* ---------- HALL OF FAME ---------- */
   var rail = document.getElementById("hofRail");
   hof.forEach(function(h){
-    var card = document.createElement("article");
-    card.className="hof-card"; card.setAttribute("role","listitem");
+    var card = document.createElement("li");
+    card.className="hof-card";
     card.innerHTML =
       '<div class="pcwrap">'+miniPostcard(h)+'</div>'
       +'<div class="body">'

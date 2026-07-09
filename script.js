@@ -50,6 +50,26 @@
     {q:"Can I compete from any country?", a:"Yes. We have members in 91 countries. As long as your national postal service accepts outbound international mail, you can race."}
   ];
 
+  var pc = document.getElementById("postcard");
+  if (pc && !reduce) pc.classList.add("animate");
+
+  var hamb = document.getElementById("hamb");
+  var menu = document.getElementById("mobileMenu");
+  if (hamb && menu) {
+    hamb.addEventListener("click", function () {
+      var open = menu.classList.toggle("open");
+      hamb.setAttribute("aria-expanded", open);
+      hamb.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    });
+    menu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        menu.classList.remove("open");
+        hamb.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  function initBelowFold() {
   /* ---------- SECTION CORNER STICKERS ---------- */
   function stampSVG(label){
     var id = "wm"+Math.random().toString(36).slice(2,8);
@@ -74,25 +94,9 @@
   var seamSeal = document.querySelector(".seam-seal");
   if(seamSeal) seamSeal.innerHTML = stampSVG("OFFICIAL SEAL");
 
-  /* ---------- HERO TYPING ---------- */
-  var head = document.getElementById("heroHead");
-  var text = head.getAttribute("data-text");
-  var textSpan = head.querySelector(".typed .txt");
-  var caret = head.querySelector(".caret");
-  if(reduce){
-    textSpan.textContent = text; if(caret) caret.style.display="none";
-  } else {
-    var i=0;
-    (function type(){
-      if(i<=text.length){ textSpan.textContent = text.slice(0,i); i++; setTimeout(type,55); }
-      else { setTimeout(function(){ if(caret) caret.style.display="none"; },1400); }
-    })();
-  }
-  var pc = document.getElementById("postcard");
-  if(pc && !reduce) pc.classList.add("animate");
-
   /* ---------- LIVE TRANSIT COUNTERS (bonus) ---------- */
   var leadersEl = document.getElementById("leaders");
+  if (leadersEl) {
   leaders.forEach(function(l){
     l.depart = new Date(Date.now() - l.days*86400000);
     var el = document.createElement("div");
@@ -123,9 +127,11 @@
   }
   tickLeaders();
   if(!reduce) setInterval(tickLeaders,1000);
+  }
 
   /* ---------- STANDINGS TABLE + count-up ---------- */
   var body = document.getElementById("standingsBody");
+  if (body) {
   var statusMap = {transit:["In Transit","transit"],arrived:["Arrived","arrived"],lost:["Lost","lost"]};
   standings.forEach(function(r){
     var tr = document.createElement("tr");
@@ -142,6 +148,7 @@
       +'<td><span class="badge badge--'+st[1]+'">'+st[0]+'</span></td>';
     body.appendChild(tr);
   });
+  }
   function countUp(el){
     var target = +el.getAttribute("data-target");
     if(reduce){ el.textContent = target.toLocaleString(); return; }
@@ -176,6 +183,7 @@
 
   /* ---------- HALL OF FAME ---------- */
   var rail = document.getElementById("hofRail");
+  if (rail) {
   hof.forEach(function(h){
     var card = document.createElement("li");
     card.className="hof-card";
@@ -215,6 +223,7 @@
   }
   if(railPrev) railPrev.addEventListener("click",function(){scrollRail(-1);});
   if(railNext) railNext.addEventListener("click",function(){scrollRail(1);});
+  }
 
   /* ---------- GAZETTE ---------- */
   var gaz=document.getElementById("gazGrid");
@@ -230,6 +239,7 @@
 
   /* ---------- FAQ + JSON-LD ---------- */
   var faqList=document.getElementById("faqList");
+  if (faqList) {
   faqs.forEach(function(f,idx){
     var item=document.createElement("div");
     item.className="faq-item";
@@ -248,16 +258,7 @@
     return {"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}};})};
   var s=document.createElement("script"); s.type="application/ld+json";
   s.textContent=JSON.stringify(faqLd); document.head.appendChild(s);
-
-  /* ---------- NAV: hamburger ---------- */
-  var hamb=document.getElementById("hamb"), menu=document.getElementById("mobileMenu");
-  hamb.addEventListener("click",function(){
-    var open=menu.classList.toggle("open");
-    hamb.setAttribute("aria-expanded",open);
-    hamb.setAttribute("aria-label",open?"Close menu":"Open menu");
-  });
-  menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){
-    menu.classList.remove("open");hamb.setAttribute("aria-expanded","false");});});
+  }
 
   /* ---------- STICKY MOBILE JOIN ---------- */
   var sticky=document.getElementById("stickyJoin");
@@ -273,5 +274,12 @@
       ents.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); rObs.unobserve(e.target);}});
     },{threshold:.15});
     document.querySelectorAll(".reveal").forEach(function(el){rObs.observe(el);});
+  }
+  }
+
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(initBelowFold, { timeout: 2000 });
+  } else {
+    setTimeout(initBelowFold, 1);
   }
 })();

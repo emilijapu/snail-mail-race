@@ -49,6 +49,8 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 .postcard{width:100%;max-width:520px;height:auto}
 .postcard.animate{animation:placein .7s cubic-bezier(.2,.8,.2,1) both}
 @keyframes placein{from{opacity:0;transform:translateY(30px) rotate(-4deg)}to{opacity:1;transform:none}}
+.stalks{transform-box:fill-box;transform-origin:bottom center;animation:wiggle 3.4s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(4deg)}75%{transform:rotate(-4deg)}}
 .sticker{position:absolute;border:var(--bd);box-shadow:var(--sh);font-family:var(--mono);font-weight:700;text-transform:uppercase;z-index:3}
 .s-slow{top:2%;right:0;width:104px;height:104px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;text-align:center;font-size:11px;line-height:1.15;padding:10px;transform:rotate(11deg)}
 .s-mph{bottom:6%;left:-2%;width:88px;height:88px;border-radius:50%;background:var(--red);color:var(--paper);display:grid;place-items:center;text-align:center;transform:rotate(-8deg)}

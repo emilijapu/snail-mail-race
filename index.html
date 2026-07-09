@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9H6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMnuECoAsyJBOm_OJ2iCAAV_upDo.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="postcard-hero.svg" as="image" type="image/svg+xml">
 <style>
 :root{
   --bg:#EAF3D7;--paper:#FFFEF9;--ink:#141210;--muted:#5F5A4E;
@@ -62,6 +61,8 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 .postcard{width:100%;max-width:520px;height:auto}
 .postcard.animate{animation:placein .7s cubic-bezier(.2,.8,.2,1) both}
 @keyframes placein{from{opacity:0;transform:translateY(30px) rotate(-4deg)}to{opacity:1;transform:none}}
+.stalks{transform-box:fill-box;transform-origin:bottom center;animation:wiggle 3.4s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(4deg)}75%{transform:rotate(-4deg)}}
 .sticker{position:absolute;border:var(--bd);box-shadow:var(--sh);font-family:var(--mono);font-weight:700;text-transform:uppercase;z-index:3}
 .s-slow{top:2%;right:0;width:104px;height:104px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;text-align:center;font-size:11px;line-height:1.15;padding:10px;transform:rotate(11deg)}
 .s-mph{bottom:6%;left:-2%;width:88px;height:88px;border-radius:50%;background:var(--red);color:var(--paper);display:grid;place-items:center;text-align:center;transform:rotate(-8deg)}
@@ -183,7 +184,60 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
     </div>
 
     <div class="postcard-stage">
-      <img class="postcard" id="postcard" src="postcard-hero.svg" width="560" height="440" fetchpriority="high" decoding="sync" alt="A cheerful cartoon snail with a big colourful spiral shell, carrying a postcard marked PAR AVION, leaving a dashed crawl trail behind it.">
+      <svg class="postcard" id="postcard" viewBox="0 0 560 440" role="img"
+        aria-label="A cheerful cartoon snail with a big colourful spiral shell, carrying a postcard marked PAR AVION, leaving a dashed crawl trail behind it.">
+        <defs>
+          <pattern id="chev" width="24" height="12" patternUnits="userSpaceOnUse">
+            <rect width="24" height="12" fill="#FFFEF9"/>
+            <path d="M0 12 L6 0 L12 0 L6 12 Z" fill="#EE3B2F"/>
+            <path d="M12 12 L18 0 L24 0 L18 12 Z" fill="#2F63FF"/>
+          </pattern>
+        </defs>
+        <path d="M20 404 q30 -14 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" fill="none"
+          stroke="#141210" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round" opacity=".5"/>
+        <path d="M78 392 Q56 392 56 362 Q56 332 88 332 L470 332 Q470 300 502 300
+                 Q536 300 536 338 Q536 376 500 384 Q472 390 472 388 L88 392 Z"
+              fill="#D7EE9A" stroke="#141210" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M486 352 q16 14 34 3" fill="none" stroke="#141210" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="480" cy="360" r="6" fill="#FF7DB0" opacity=".8"/>
+        <circle cx="232" cy="238" r="112" fill="#FFFEF9" stroke="#141210" stroke-width="6"/>
+        <circle cx="232" cy="238" r="90" fill="none" stroke="#EE3B2F" stroke-width="17"/>
+        <circle cx="232" cy="238" r="62" fill="none" stroke="#2F63FF" stroke-width="17"/>
+        <circle cx="232" cy="238" r="34" fill="none" stroke="#FFCE3A" stroke-width="17"/>
+        <circle cx="232" cy="238" r="11" fill="#EE3B2F" stroke="#141210" stroke-width="3"/>
+        <g transform="translate(150 128) rotate(-13)">
+          <rect x="0" y="0" width="158" height="104" rx="7" fill="#FFFEF9" stroke="#141210" stroke-width="5"/>
+          <rect x="5" y="5" width="148" height="11" fill="url(#chev)"/>
+          <rect x="5" y="88" width="148" height="11" fill="url(#chev)"/>
+          <line x1="96" y1="26" x2="96" y2="80" stroke="#141210" stroke-width="2" stroke-dasharray="2 5"/>
+          <g stroke="#141210" stroke-width="2" opacity=".4" stroke-linecap="round">
+            <path d="M18 40 h58"/><path d="M18 54 h64"/><path d="M18 68 h48"/>
+            <path d="M108 44 h38"/><path d="M108 58 h30"/>
+          </g>
+          <g transform="translate(112 20)">
+            <rect x="0" y="0" width="30" height="34" fill="#FFCE3A" stroke="#141210" stroke-width="3"/>
+            <path d="M8 26 c-3 0 -5 -2 -5 -5 c0 -4 3 -6 7 -6 c4 0 6 3 6 6" fill="none" stroke="#141210" stroke-width="2.4"/>
+            <path d="M8 26 h12" stroke="#141210" stroke-width="2.4"/>
+          </g>
+          <g transform="translate(52 60) rotate(-9)" opacity=".85">
+            <circle r="17" fill="none" stroke="#EE3B2F" stroke-width="2.4"/>
+            <circle r="11" fill="none" stroke="#EE3B2F" stroke-width="1.4"/>
+            <path d="M-9 0 h18 M-9 -3 h18 M-9 3 h18" stroke="#EE3B2F" stroke-width="1.4"/>
+          </g>
+          <g transform="translate(14 78)">
+            <rect x="0" y="0" width="66" height="15" fill="#2F63FF"/>
+            <text x="33" y="11" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="8" fill="#FFFEF9" letter-spacing="1">PAR AVION</text>
+          </g>
+        </g>
+        <g class="stalks">
+          <path d="M496 308 q-8 -52 -22 -66" fill="none" stroke="#141210" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="472" cy="238" r="16" fill="#FFFEF9" stroke="#141210" stroke-width="4"/>
+          <circle cx="475" cy="240" r="6" fill="#141210"/>
+          <path d="M518 310 q10 -44 28 -54" fill="none" stroke="#141210" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="548" cy="252" r="16" fill="#FFFEF9" stroke="#141210" stroke-width="4"/>
+          <circle cx="551" cy="254" r="6" fill="#141210"/>
+        </g>
+      </svg>
 
       <!-- peel stickers -->
       <span class="sticker s-slow" aria-hidden="true">Certified<br>Slow ✶</span>

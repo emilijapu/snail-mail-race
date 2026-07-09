@@ -3,6 +3,7 @@
  * Incremental seed — adds missing HoF + blog posts without duplicating full seed.
  */
 import { spawnSync } from "node:child_process";
+import { BLOG_POSTS, richContent } from "./blog-posts-content.mjs";
 
 const SITE_ID = "56d7087c-434a-45a1-a38b-277ff14c6016";
 
@@ -35,11 +36,13 @@ const NEW_HOF = [
   { title: "The Ross Dependency Run", origin: "Scott Base", destination: "Thimphu", routeVia: "via Christchurch, Mumbai", transitDays: 1089, season: "Season 13", memberHandle: "@ice_mail", story: "Wintered at McMurdo, then spent nine months in a Mumbai customs queue with ambiguous paperwork." },
 ];
 
-const NEW_POSTS = [
-  { title: "Letter from the sorting clerk of Ascension Island", excerpt: "A firsthand account of holding league mail during a cargo drought that lasted nineteen months." },
-  { title: "Five routes that look fast but aren't", excerpt: "Capital-to-capital shortcuts that disqualify, and the obscure corridors that don't." },
-  { title: "Season 14 midpoint: who's still in the post?", excerpt: "At the halfway mark, 612 cards remain in transit. We rank the corridors doing the most work." },
-];
+const NEW_POSTS = BLOG_POSTS.filter((p) =>
+  [
+    "Letter from the sorting clerk of Ascension Island",
+    "Five routes that look fast but aren't",
+    "Season 14 midpoint: who's still in the post?",
+  ].includes(p.title),
+);
 
 async function existingHofTitles() {
   const out = await api("POST", "/wix-data/v2/items/query", {
@@ -71,14 +74,13 @@ async function insertPosts(posts) {
   const memberId = members.members?.[0]?.id;
   if (!memberId) throw new Error("No member for blog author");
   const lc = () => crypto.randomUUID();
-  const para = (text) => ({ type: "PARAGRAPH", id: lc(), nodes: [{ type: "TEXT", id: lc(), textData: { text, decorations: [] } }] });
   await api("POST", "/blog/v3/bulk/draft-posts/create", {
     publish: true,
     draftPosts: posts.map((p) => ({
       title: p.title,
       memberId,
       excerpt: p.excerpt,
-      richContent: { nodes: [para(p.excerpt)] },
+      richContent: richContent(p.body, lc),
     })),
   });
   console.log(`Inserted ${posts.length} blog posts`);

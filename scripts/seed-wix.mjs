@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { spawnSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
+import { BLOG_POSTS, richContent } from "./blog-posts-content.mjs";
 
 const SITE_ID = "56d7087c-434a-45a1-a38b-277ff14c6016";
 const CLIENT_ID = "5b263943-273d-425f-b980-0eb2873c2864";
@@ -205,32 +206,13 @@ async function seedBlog() {
   const memberId = members.members?.[0]?.id;
   if (!memberId) throw new Error("No member for blog author");
 
-  const para = (text) => ({ type: "PARAGRAPH", id: lc(), nodes: [{ type: "TEXT", id: lc(), textData: { text, decorations: [] } }] });
-  const rich = (p) => ({ nodes: (p.body || [p.excerpt]).map(para) });
-  const posts = [
-    { title: "Why the Azores sorting facility is every racer's best friend", excerpt: "The Ponta Delgada regional hub has delayed more league postcards than any other facility on earth." },
-    {
-      title: "Season 13 in review: the year of the mislabelled sack",
-      excerpt: "A single clerical error in Panama rerouted eleven entries and reshaped the standings.",
-      body: [
-        "Season 13 began with the quiet conviction that paperwork would behave. It did not. On 4 April, a bonded warehouse clerk in Colón mislabelled a canvas sack bound for Lima as perishable fruit. Eleven league postcards were inside, each stamped and sealed according to regulation. The sack toured three Panamanian depots, sat in a humid holding room for seven months, and resurfaced in Veracruz with mildew and a fresh stack of routing stickers.",
-        "The error reshaped the standings in ways no deliberate strategy could rival. Cards that had left Auckland and Reykjavík weeks apart arrived on the same Tuesday, separated only by postmark ink. @slowpost_nz, who had engineered a respectable crawl through the South Atlantic, found their entry leapfrogged by a misrouted novice from Winnipeg. The discipline committee ruled the delay legitimate: the league measures postal fate, not intent.",
-        "By December, Season 13 had delivered the lowest average transit speed in five years. Racers called it quiet. Historians, we suspect, will call it glorious.",
-      ],
-    },
-    { title: "The postmaster of Pitcairn on patience, rats, and rubber stamps", excerpt: "The island's sole postal clerk has hand-cancelled more league legends than anyone alive." },
-    { title: "Letter from the sorting clerk of Ascension Island", excerpt: "A firsthand account of holding league mail during a cargo drought that lasted nineteen months." },
-    { title: "Five routes that look fast but aren't", excerpt: "Capital-to-capital shortcuts that disqualify, and the obscure corridors that don't." },
-    { title: "Season 14 midpoint: who's still in the post?", excerpt: "At the halfway mark, 612 cards remain in transit. We rank the corridors doing the most work." },
-  ];
-
   await api("POST", "/blog/v3/bulk/draft-posts/create", {
     publish: true,
-    draftPosts: posts.map((p) => ({
+    draftPosts: BLOG_POSTS.map((p) => ({
       title: p.title,
       memberId,
       excerpt: p.excerpt,
-      richContent: rich(p),
+      richContent: richContent(p.body, lc),
     })),
   });
 }

@@ -224,28 +224,30 @@ export async function fetchTestimonials(limit = 10) {
 export async function fetchBlogPost({ slug, id }) {
   const fieldsets = { fieldsets: ["RICH_CONTENT", "URL"] };
   if (slug) {
-    const { items } = await client.posts.queryPosts(fieldsets).eq("slug", slug).limit(1).find();
-    return items?.[0] || null;
+    const result = await client.posts.queryPosts(fieldsets).eq("slug", slug).limit(1).find();
+    const items = result.items || result.posts || [];
+    return items[0] || null;
   }
   if (id) {
     try {
       const res = await client.posts.getPost(id, fieldsets);
       return res?.post ?? res ?? null;
     } catch {
-      const { items } = await client.posts.queryPosts(fieldsets).eq("_id", id).limit(1).find();
-      return items?.[0] || null;
+      const result = await client.posts.queryPosts(fieldsets).eq("_id", id).limit(1).find();
+      const items = result.items || result.posts || [];
+      return items[0] || null;
     }
   }
   return null;
 }
 
 export async function fetchBlogPosts(limit = 6) {
-  const { items } = await client.posts
+  const result = await client.posts
     .queryPosts({ fieldsets: ["URL"] })
     .descending("firstPublishedDate")
     .limit(limit)
     .find();
-  return items || [];
+  return result.items || result.posts || [];
 }
 
 export function wireForm() {

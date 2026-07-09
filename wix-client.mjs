@@ -2,7 +2,7 @@ import { createClient, OAuthStrategy, media } from "https://esm.sh/@wix/sdk@1.15
 import { items } from "https://esm.sh/@wix/data@1.0.285";
 import { submissions } from "https://esm.sh/@wix/forms@1.0.150";
 import { posts } from "https://esm.sh/@wix/blog@1.0.488";
-import { wixEventsV2, rsvpV2 } from "https://esm.sh/@wix/events@1.0.502";
+import { wixEventsV2, rsvpV2 } from "https://esm.sh/@wix/events@1.0.500";
 import { members } from "https://esm.sh/@wix/members@1.0.102";
 
 const TOKEN_KEY = "smrl_wix_tokens";

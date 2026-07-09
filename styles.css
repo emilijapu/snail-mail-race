@@ -403,3 +403,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:56px 30px}
 .contact-card{background:var(--paper);border:var(--bd);border-radius:16px;padding:28px;box-shadow:var(--sh)}
 .contact-card h2{font-size:22px;margin-bottom:16px}
 .contact-form-wrap{background:var(--paper);border:var(--bd);border-radius:16px;padding:28px;box-shadow:var(--sh)}
+.blog-article-wrap{max-width:760px}
+.blog-article{margin-top:28px;display:grid;gap:18px;font-size:16px;line-height:1.65}
+.blog-article p{color:var(--ink);font-weight:500}
+.blog-article h2,.blog-article h3{font-family:var(--disp);margin-top:8px}

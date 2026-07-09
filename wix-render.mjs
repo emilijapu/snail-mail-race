@@ -92,14 +92,53 @@ export function renderHofGrid(rows, gridId = "hofGrid") {
   });
 }
 
+export function blogPostHref(post) {
+  const slug = post.slug
+    || (post.url?.path ? post.url.path.replace(/^\//, "").split("/").filter(Boolean).pop() : null);
+  if (slug) return `/blog-post.html?slug=${encodeURIComponent(slug)}`;
+  if (post._id) return `/blog-post.html?id=${encodeURIComponent(post._id)}`;
+  const base = post.url?.base?.replace(/\/$/, "") || "";
+  const path = post.url?.path || "";
+  if (base && path && /^https?:\/\//i.test(base)) return `${base}${path}`;
+  return "/blog.html";
+}
+
+export function applyPostLink(anchor, href) {
+  anchor.href = href;
+  try {
+    const resolved = new URL(href, location.origin);
+    if (resolved.origin !== location.origin) {
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer";
+    }
+  } catch {
+    /* relative URL */
+  }
+}
+
+export function renderRichContent(richContent) {
+  if (!richContent?.nodes?.length) return "";
+  return richContent.nodes.map((node) => {
+    if (node.type === "PARAGRAPH" && node.nodes) {
+      const text = node.nodes.map((n) => n.textData?.text || "").join("");
+      return text ? `<p>${text}</p>` : "";
+    }
+    if (node.type === "HEADING" && node.nodes) {
+      const text = node.nodes.map((n) => n.textData?.text || "").join("");
+      const level = node.headingData?.level || 2;
+      return text ? `<h${level}>${text}</h${level}>` : "";
+    }
+    return "";
+  }).join("");
+}
+
 export function renderGazette(blogPosts, containerId = "gazGrid") {
   const gaz = document.getElementById(containerId);
   if (!gaz || !blogPosts.length) return;
   gaz.innerHTML = "";
   blogPosts.forEach((p) => {
     const a = document.createElement("a");
-    const href = (p.url?.base && p.url?.path) ? `${p.url.base}${p.url.path}` : "blog.html";
-    a.href = href;
+    applyPostLink(a, blogPostHref(p));
     a.className = "post";
     const date = p.firstPublishedDate
       ? new Date(p.firstPublishedDate).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })
@@ -162,6 +201,24 @@ export async function fetchTestimonials(limit = 10) {
   if (!col) return [];
   const { items } = await client.items.query(col).limit(limit).find();
   return items || [];
+}
+
+export async function fetchBlogPost({ slug, id }) {
+  const fieldsets = { fieldsets: ["RICH_CONTENT", "URL"] };
+  if (slug) {
+    const { items } = await client.posts.queryPosts(fieldsets).eq("slug", slug).limit(1).find();
+    return items?.[0] || null;
+  }
+  if (id) {
+    try {
+      const res = await client.posts.getPost(id, fieldsets);
+      return res?.post ?? res ?? null;
+    } catch {
+      const { items } = await client.posts.queryPosts(fieldsets).eq("_id", id).limit(1).find();
+      return items?.[0] || null;
+    }
+  }
+  return null;
 }
 
 export async function fetchBlogPosts(limit = 6) {

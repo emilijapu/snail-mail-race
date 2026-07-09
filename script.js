@@ -36,9 +36,9 @@
   ];
 
   var posts = [
-    {cat:"Route Analysis", date:"14 Feb 2025", title:"Why the Azores sorting facility is every racer's best friend", excerpt:"The Ponta Delgada regional hub has delayed more league postcards than any other facility on earth. We investigate why."},
-    {cat:"Season Recap", date:"02 Jan 2025", title:"Season 13 in review: the year of the mislabelled sack", excerpt:"A single clerical error in Panama rerouted eleven entries and reshaped the standings. A quiet, glorious season."},
-    {cat:"Interview", date:"09 Dec 2024", title:"The postmaster of Pitcairn on patience, rats, and rubber stamps", excerpt:"The island's sole postal clerk has hand-cancelled more league legends than anyone alive. He is in no hurry to stop."}
+    {cat:"Route Analysis", date:"14 Feb 2025", slug:"why-the-azores-sorting-facility-is-every-racer-s-best-friend", title:"Why the Azores sorting facility is every racer's best friend", excerpt:"The Ponta Delgada regional hub has delayed more league postcards than any other facility on earth. We investigate why."},
+    {cat:"Season Recap", date:"02 Jan 2025", slug:"season-13-in-review-the-year-of-the-mislabelled-sack", title:"Season 13 in review: the year of the mislabelled sack", excerpt:"A single clerical error in Panama rerouted eleven entries and reshaped the standings. A quiet, glorious season."},
+    {cat:"Interview", date:"09 Dec 2024", slug:"the-postmaster-of-pitcairn-on-patience-rats-and-rubber-stamps", title:"The postmaster of Pitcairn on patience, rats, and rubber stamps", excerpt:"The island's sole postal clerk has hand-cancelled more league legends than anyone alive. He is in no hurry to stop."}
   ];
 
   var faqs = [
@@ -213,9 +213,10 @@
 
   /* ---------- GAZETTE ---------- */
   var gaz=document.getElementById("gazGrid");
-  posts.forEach(function(p){
+  if(gaz) posts.forEach(function(p){
     var a=document.createElement("a");
-    a.href="#"; a.className="post";
+    a.href=p.slug?("/blog-post.html?slug="+encodeURIComponent(p.slug)):"/blog.html";
+    a.className="post";
     a.innerHTML='<span class="cat">'+p.cat+'</span><div class="pdate">'+p.date+'</div>'
       +'<h3>'+p.title+'</h3><p>'+p.excerpt+'</p>'
       +'<span class="linkarrow">Read more <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>';

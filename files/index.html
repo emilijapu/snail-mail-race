@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Snail Mail Racing League — The Slowest Mail Wins</title>
+<meta name="description" content="The world's only competitive league for slow postal delivery. Mail an identical postcard through the slowest route you can find. The last card to arrive wins the season. Est. 2012, Zurich." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- SportsOrganization JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  "name": "Snail Mail Racing League",
+  "url": "https://snailmailracing.org",
+  "foundingDate": "2012",
+  "sport": "Competitive postal racing",
+  "email": "league@snailmailracing.org",
+  "telephone": "+41 44 301 7890",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bahnhofstrasse 12",
+    "postalCode": "8001",
+    "addressLocality": "Zurich",
+    "addressCountry": "CH"
+  },
+  "sameAs": [
+    "https://instagram.com/snailmailracing",
+    "https://facebook.com/snailmailracingleague",
+    "https://x.com/smrlofficial"
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" role="status" aria-label="League notices">
+  <div class="marquee__track">
+    <span>Season 14 is underway</span><span class="snl">🐌</span>
+    <span>As of this morning, nothing has arrived</span><span class="snl">🐌</span>
+    <span>Current leader: 1,247 days and counting</span><span class="snl">🐌</span>
+    <span>No tracking numbers · no expedited anything</span><span class="snl">🐌</span>
+    <span>Average winning time: 847 days</span><span class="snl">🐌</span>
+    <span>Registration is free</span><span class="snl">🐌</span>
+    <span aria-hidden="true">Season 14 is underway</span><span class="snl" aria-hidden="true">🐌</span>
+    <span aria-hidden="true">As of this morning, nothing has arrived</span><span class="snl" aria-hidden="true">🐌</span>
+    <span aria-hidden="true">Current leader: 1,247 days and counting</span><span class="snl" aria-hidden="true">🐌</span>
+    <span aria-hidden="true">No tracking numbers · no expedited anything</span><span class="snl" aria-hidden="true">🐌</span>
+    <span aria-hidden="true">Average winning time: 847 days</span><span class="snl" aria-hidden="true">🐌</span>
+    <span aria-hidden="true">Registration is free</span><span class="snl" aria-hidden="true">🐌</span>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Snail Mail Racing League home">
+      <span class="crest" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none">
+          <g stroke="#141210" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M34 62 c-8 0 -13 -6 -13 -14 c0 -10 9 -18 20 -18 c11 0 19 8 19 18 c0 6 -5 11 -11 11 c-5 0 -9 -4 -9 -9 c0 -4 3 -6 6 -6"/>
+            <path d="M34 62 h24"/><path d="M58 55 l8 -16 M64 39 l4 3 M60 40 l4 3"/>
+          </g>
+        </svg>
+      </span>
+      <span>
+        <span class="bt">Snail Mail Racing League</span>
+        <span class="bs">Intl. Postal Racing Authority · Est. 2012</span>
+      </span>
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="#standings">Standings</a>
+      <a href="#rules">Rules</a>
+      <a href="#hall-of-fame">Hall of Fame</a>
+      <a href="#gazette">The Gazette</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#register" class="btn nav-join">Join the league</a>
+    <button class="hamburger" id="hamb" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+    <a href="#standings">Standings</a>
+    <a href="#rules">Rules</a>
+    <a href="#hall-of-fame">Hall of Fame</a>
+    <a href="#gazette">The Gazette</a>
+    <a href="#contact">Contact</a>
+    <a href="#register" class="btn btn--lg">Join the league</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Competitive Postal Racing · Season 14</span>
+      <h1 id="heroHead" data-text="The Slowest Mail Wins" aria-label="The Slowest Mail Wins"><span class="ghost" aria-hidden="true">The Slowest Mail Wins</span><span class="typed" aria-hidden="true"><span class="txt"></span><span class="caret" aria-hidden="true"></span></span></h1>
+      <span class="u-line" aria-hidden="true"></span>
+      <p class="stat"><b>4,200</b> members · <b>91</b> countries · avg. winning transit: <b>847</b> days</p>
+      <div class="hero-cta">
+        <a href="#register" class="btn btn--lg">Join the league</a>
+        <a href="#rules" class="btn btn--ghost btn--lg">View the rules</a>
+      </div>
+    </div>
+
+    <div class="postcard-stage">
+      <!-- cartoon snail hauling the mail -->
+      <svg class="postcard" id="postcard" viewBox="0 0 560 440" role="img"
+        aria-label="A cheerful cartoon snail with a big colourful spiral shell, carrying a postcard marked PAR AVION, leaving a dashed crawl trail behind it.">
+        <defs>
+          <pattern id="chev" width="24" height="12" patternUnits="userSpaceOnUse">
+            <rect width="24" height="12" fill="#FFFEF9"/>
+            <path d="M0 12 L6 0 L12 0 L6 12 Z" fill="#EE3B2F"/>
+            <path d="M12 12 L18 0 L24 0 L18 12 Z" fill="#2F63FF"/>
+          </pattern>
+        </defs>
+
+        <!-- crawl trail -->
+        <path d="M20 404 q30 -14 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" fill="none"
+          stroke="#141210" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round" opacity=".5"/>
+
+        <!-- body / foot -->
+        <path d="M78 392 Q56 392 56 362 Q56 332 88 332 L470 332 Q470 300 502 300
+                 Q536 300 536 338 Q536 376 500 384 Q472 390 472 388 L88 392 Z"
+              fill="#D7EE9A" stroke="#141210" stroke-width="5" stroke-linejoin="round"/>
+        <!-- smile -->
+        <path d="M486 352 q16 14 34 3" fill="none" stroke="#141210" stroke-width="4" stroke-linecap="round"/>
+        <!-- cheek -->
+        <circle cx="480" cy="360" r="6" fill="#FF7DB0" opacity=".8"/>
+
+        <!-- shell -->
+        <circle cx="232" cy="238" r="112" fill="#FFFEF9" stroke="#141210" stroke-width="6"/>
+        <circle cx="232" cy="238" r="90" fill="none" stroke="#EE3B2F" stroke-width="17"/>
+        <circle cx="232" cy="238" r="62" fill="none" stroke="#2F63FF" stroke-width="17"/>
+        <circle cx="232" cy="238" r="34" fill="none" stroke="#FFCE3A" stroke-width="17"/>
+        <circle cx="232" cy="238" r="11" fill="#EE3B2F" stroke="#141210" stroke-width="3"/>
+
+        <!-- postcard tucked on the shell -->
+        <g transform="translate(150 128) rotate(-13)">
+          <rect x="0" y="0" width="158" height="104" rx="7" fill="#FFFEF9" stroke="#141210" stroke-width="5"/>
+          <rect x="5" y="5" width="148" height="11" fill="url(#chev)"/>
+          <rect x="5" y="88" width="148" height="11" fill="url(#chev)"/>
+          <line x1="96" y1="26" x2="96" y2="80" stroke="#141210" stroke-width="2" stroke-dasharray="2 5"/>
+          <g stroke="#141210" stroke-width="2" opacity=".4" stroke-linecap="round">
+            <path d="M18 40 h58"/><path d="M18 54 h64"/><path d="M18 68 h48"/>
+            <path d="M108 44 h38"/><path d="M108 58 h30"/>
+          </g>
+          <!-- stamp -->
+          <g transform="translate(112 20)">
+            <rect x="0" y="0" width="30" height="34" fill="#FFCE3A" stroke="#141210" stroke-width="3"/>
+            <path d="M8 26 c-3 0 -5 -2 -5 -5 c0 -4 3 -6 7 -6 c4 0 6 3 6 6" fill="none" stroke="#141210" stroke-width="2.4"/>
+            <path d="M8 26 h12" stroke="#141210" stroke-width="2.4"/>
+          </g>
+          <!-- postmark -->
+          <g transform="translate(52 60) rotate(-9)" opacity=".85">
+            <circle r="17" fill="none" stroke="#EE3B2F" stroke-width="2.4"/>
+            <circle r="11" fill="none" stroke="#EE3B2F" stroke-width="1.4"/>
+            <path d="M-9 0 h18 M-9 -3 h18 M-9 3 h18" stroke="#EE3B2F" stroke-width="1.4"/>
+          </g>
+          <!-- PAR AVION -->
+          <g transform="translate(14 78)">
+            <rect x="0" y="0" width="66" height="15" fill="#2F63FF"/>
+            <text x="33" y="11" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="8" fill="#FFFEF9" letter-spacing="1">PAR AVION</text>
+          </g>
+        </g>
+
+        <!-- eye-stalks -->
+        <g class="stalks">
+          <path d="M496 308 q-8 -52 -22 -66" fill="none" stroke="#141210" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="472" cy="238" r="16" fill="#FFFEF9" stroke="#141210" stroke-width="4"/>
+          <circle cx="475" cy="240" r="6" fill="#141210"/>
+          <path d="M518 310 q10 -44 28 -54" fill="none" stroke="#141210" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="548" cy="252" r="16" fill="#FFFEF9" stroke="#141210" stroke-width="4"/>
+          <circle cx="551" cy="254" r="6" fill="#141210"/>
+        </g>
+      </svg>
+
+      <!-- peel stickers -->
+      <span class="sticker s-slow" aria-hidden="true">Certified<br>Slow ✶</span>
+      <span class="sticker s-mph" aria-hidden="true"><b>0</b><small>M P H</small></span>
+      <span class="sticker s-since" aria-hidden="true">Est. 2012</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVE TRANSIT COUNTER (bonus) ============ -->
+<section class="section section--dark transit" id="transit" aria-labelledby="transit-h">
+  <div class="stamp-wm" style="top:-24px;right:20px" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="transit-head">
+      <div>
+        <span class="eyebrow">Live Transit Register · updated every second</span>
+        <h2 id="transit-h">Currently in the post</h2>
+      </div>
+      <p>These three postcards left home a long time ago and are, to the best of our knowledge, still out there. Counters run live from verified departure postmarks.</p>
+    </div>
+    <div class="leaders" id="leaders" aria-live="off"></div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how" aria-labelledby="how-h">
+  <div class="stamp-wm" style="top:20px;left:-46px" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">Form 14-A · Procedure</span>
+    <h2 class="section-title" id="how-h">How a race works</h2>
+    <p class="section-lede">Three steps. No tracking numbers, no expedited anything. The only performance metric is patience.</p>
+    <div class="how-grid">
+      <div class="step reveal">
+        <div class="snum">1</div>
+        <svg class="sicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="2" y="5" width="20" height="14" rx="1"/><path d="M2 6 l10 8 10 -8"/></svg>
+        <h3>Choose a slow corridor</h3>
+        <p>Pick an origin and a route through at least one approved slow corridor. Direct airmail between capital cities is, regrettably, disqualified.</p>
+      </div>
+      <div class="step reveal">
+        <div class="snum">2</div>
+        <svg class="sicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3 -3 15 0 18"/></svg>
+        <h3>Mail the league postcard</h3>
+        <p>Send the identical league-stamped postcard to our Zurich PO box. Postage is on you — usually under a dollar, occasionally twelve.</p>
+      </div>
+      <div class="step reveal">
+        <div class="snum">3</div>
+        <svg class="sicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M8 21h8M12 17v4M6 4h12v4a6 6 0 0 1-12 0zM6 5H3v2a3 3 0 0 0 3 3M18 5h3v2a3 3 0 0 1-3 3"/></svg>
+        <h3>Arrive last, win the season</h3>
+        <p>The final postcard to reach the PO box wins. Our postmaster photographs and timestamps each arrival. That's the whole sport.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STANDINGS (requirement) ============ -->
+<section class="section section--tint" id="standings" aria-labelledby="standings-h">
+  <div class="stamp-wm" style="bottom:-30px;right:24px" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="standings-head">
+      <span class="eyebrow">Annex III · Season 14 Register</span>
+      <h2 class="section-title" id="standings-h">Current season standings</h2>
+      <p class="section-lede">Ranked by days in transit — highest is best. Cards confirmed arrived are, sadly, out of the running.</p>
+    </div>
+
+    <div class="table-frame">
+      <div class="table-scroll">
+        <table class="standings" id="standingsTable">
+          <caption>Official league register · figures verified at time of last PO-box receipt · leader = slowest still in transit</caption>
+          <thead>
+            <tr>
+              <th scope="col">Rk</th>
+              <th scope="col">Member</th>
+              <th scope="col">Origin</th>
+              <th scope="col">Destination</th>
+              <th scope="col">Days in transit</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody id="standingsBody"><!-- injected --></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="table-foot">
+      <span class="ref">Register updated within 48h of receipt · 8 of 612 active entries shown</span>
+      <a href="#" class="linkarrow">View full standings
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RULES (requirement) ============ -->
+<section class="section" id="rules" aria-labelledby="rules-h">
+  <div class="stamp-wm" style="top:-20px;right:20px" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">The Rule Book · Ratified Season 1</span>
+    <h2 class="section-title" id="rules-h">Race rules &amp; formats</h2>
+    <p class="section-lede">The official statutes governing eligible routes, postcard specifications, and grounds for disqualification. Read in full before your first entry.</p>
+
+    <div class="rules-doc">
+      <div class="docref">
+        <span>Document SMRL-RB-14 · Rev. 7</span>
+        <span>Zurich · Ratified 12 Sept 2012 · Amended annually</span>
+      </div>
+
+      <div class="clause">
+        <div class="cnum">01</div>
+        <div>
+          <h3>Race formats</h3>
+          <p>Three sanctioned formats run each season. All share one victory condition: the last card to arrive wins.</p>
+          <ul class="subs">
+            <li><b>Open Corridor</b> — free choice of destination; any approved slow route qualifies. The classic format.</li>
+            <li><b>Fixed Terminus</b> — every racer mails to the same shared destination. Origin is your only variable.</li>
+            <li><b>Return to Sender</b> — mail a card to yourself the long way round. Purists' favourite; historically the slowest.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="cnum">02</div>
+        <div>
+          <h3>Eligible routes</h3>
+          <p>A route must traverse at least one corridor from the current approved list. Speed is a foul, not a feature.</p>
+          <ul class="subs">
+            <li>Surface mail (sea and land) is strongly encouraged; airmail permitted only on legs with no surface option.</li>
+            <li>Direct capital-to-capital airmail is prohibited and voids the entry.</li>
+            <li>Deliberate misrouting through remote sorting facilities is entirely within the spirit of the league.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="cnum">03</div>
+        <div>
+          <h3>Postcard specification</h3>
+          <p>Every entry uses the identical league-issued postcard so that no card gains an unfair advantage in handling.</p>
+          <ul class="subs">
+            <li>Standard 105 × 148 mm league stock, 300 gsm, matte. No lamination, no rigid backing.</li>
+            <li>Must bear the league seal and your member handle on the reverse.</li>
+            <li>One message permitted. Weatherproofing is at your peril; the elements are part of the sport.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="cnum">04</div>
+        <div>
+          <h3>Disqualification</h3>
+          <p>We adjudicate slowly and reluctantly. The following, however, will end a run.</p>
+          <ul class="subs">
+            <li>Any use of courier, express, or tracked services on any leg.</li>
+            <li>Tampering with postmarks, or paying a clerk to hold your card. We will find out. We have time.</li>
+            <li>Cards declared lost after five years earn an honourable mention but do not count as a finish.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HALL OF FAME (requirement) ============ -->
+<section class="section section--tint" id="hall-of-fame" aria-labelledby="hof-h">
+  <div class="stamp-wm" style="top:-24px;left:-40px" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hof-head">
+      <div>
+        <span class="eyebrow">The Archive · 13 seasons</span>
+        <h2 class="section-title" id="hof-h">Hall of Fame</h2>
+        <p class="section-lede">Legendary slow deliveries, verified and enshrined. The longest confirmed transit in league history took eleven years.</p>
+      </div>
+      <div class="hof-controls" aria-hidden="true">
+        <button id="hofPrev" aria-label="Previous">
+          <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button id="hofNext" aria-label="Next">
+          <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 3l5 5-5 5"/></svg></button>
+      </div>
+    </div>
+    <div class="hof-rail" id="hofRail" tabindex="0" role="list" aria-label="Legendary deliveries"><!-- injected --></div>
+  </div>
+</section>
+
+<!-- ============ MEMBER SPOTLIGHT ============ -->
+<section class="section" id="members" aria-labelledby="mem-h">
+  <div class="wrap">
+    <span class="eyebrow">Member Register · Voices</span>
+    <h2 class="section-title" id="mem-h">From the membership</h2>
+    <div class="spotlight-grid">
+      <figure class="quote reveal">
+        <span class="qmark" aria-hidden="true">&rdquo;</span>
+        <p>I mailed a postcard to myself through four Pacific islands. It arrived three years later with a bite mark and a customs form in a language I still cannot identify.</p>
+        <figcaption class="who">
+          <span class="fg" aria-hidden="true">🇳🇴</span>
+          <span><span class="nm">Ingrid Haugen</span><br><span class="mt">Norway · 6 seasons competed</span></span>
+        </figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <span class="qmark" aria-hidden="true">&rdquo;</span>
+        <p>My Season 9 entry is still in transit. I check the tracking page every morning like a meditation.</p>
+        <figcaption class="who">
+          <span class="fg" aria-hidden="true">🇵🇹</span>
+          <span><span class="nm">Tomás Ferreira</span><br><span class="mt">Portugal · 4 seasons competed</span></span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GAZETTE ============ -->
+<section class="section section--tint" id="gazette" aria-labelledby="gaz-h">
+  <div class="stamp-wm" style="bottom:-28px;right:22px" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">The Gazette · Issue 47</span>
+    <h2 class="section-title" id="gaz-h">Latest from the Gazette</h2>
+    <p class="section-lede">Route analysis, season recaps, and interviews with the world's most patient postmasters.</p>
+    <div class="gaz-grid" id="gazGrid"><!-- injected --></div>
+  </div>
+</section>
+
+<!-- ============ EVENTS ============ -->
+<section class="section" id="events" aria-labelledby="ev-h">
+  <div class="wrap">
+    <span class="eyebrow">Fixtures · Register early</span>
+    <h2 class="section-title" id="ev-h">Upcoming events</h2>
+    <p class="section-lede">Registration windows for sanctioned events. There is no rush — but the windows do close.</p>
+    <div class="ev-grid">
+      <div class="event">
+        <span class="edate">14 August 2026</span>
+        <h3>Season 15 Mail-Off</h3>
+        <span class="eloc">Global / Remote · Open Corridor format</span>
+        <a href="#register" class="btn">Register</a>
+      </div>
+      <div class="event">
+        <span class="edate">3 October 2026</span>
+        <h3>Annual Slow Gala</h3>
+        <span class="eloc">Zurich, CH · In person · black tie optional</span>
+        <a href="#register" class="btn">Register</a>
+      </div>
+      <div class="event">
+        <span class="edate">21 November 2026</span>
+        <h3>Return-to-Sender Invitational</h3>
+        <span class="eloc">Global / Remote · Purists only</span>
+        <a href="#register" class="btn">Register</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REGISTRATION FORM (requirement) ============ -->
+<section class="section reg" id="register" aria-labelledby="reg-h">
+  <div class="stamp-wm" style="top:-20px;left:-40px" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">Form 14-B · Season Registration &amp; Inquiry</span>
+    <h2 class="section-title" id="reg-h">Join the league</h2>
+    <p class="section-lede">Registration is free — you cover your own postage. Complete the form below and a human will reply, eventually.</p>
+
+    <div class="form-shell">
+      <aside class="form-aside">
+        <span class="cn22" aria-hidden="true">CN22 · OFFICIAL</span>
+        <span class="eyebrow">Applicant Notice</span>
+        <h3>The only sport where doing nothing is a strategy.</h3>
+        <p>You will be entered into the active season and issued a league postcard number. Then you wait. That is the entire commitment.</p>
+        <ul>
+          <li><b>91</b><span>countries currently fielding entries</span></li>
+          <li><b>612</b><span>postcards in transit this season</span></li>
+          <li><b>Free</b><span>to register — postage is the only cost</span></li>
+        </ul>
+      </aside>
+
+      <div class="form-body">
+        <form id="regForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required />
+              <span class="err">Please enter your name.</span>
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required />
+              <span class="err">Please enter a valid email.</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-country">Country <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-country" name="country" type="text" autocomplete="country-name" required />
+              <span class="err">Please enter your country.</span>
+            </div>
+            <div class="field">
+              <label for="f-format">Preferred race format <span class="req" aria-hidden="true">*</span></label>
+              <select id="f-format" name="preferredRaceFormat" required>
+                <option value="">Select a format…</option>
+                <option>Open Corridor</option>
+                <option>Fixed Terminus</option>
+                <option>Return to Sender</option>
+                <option>Undecided — surprise me</option>
+              </select>
+              <span class="err">Please choose a format.</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg">Message <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+            <textarea id="f-msg" name="message" placeholder="Tell us about your dream slow route, or ask a question."></textarea>
+          </div>
+          <p class="reassure">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
+            We only use your email to respond to this inquiry. No newsletters unless you opt in.
+          </p>
+          <button type="submit" class="btn btn--lg" style="width:100%">Submit registration</button>
+        </form>
+
+        <div class="form-success" id="formSuccess" role="status">
+          <svg class="stampok" viewBox="0 0 120 120" aria-hidden="true">
+            <g transform="rotate(-9 60 60)">
+              <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="4"/>
+              <circle cx="60" cy="60" r="40" fill="none" stroke="currentColor" stroke-width="2"/>
+              <text x="60" y="56" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="15" fill="currentColor" letter-spacing="1">RECEIVED</text>
+              <text x="60" y="74" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" fill="currentColor" letter-spacing="1">SMRL · ZURICH</text>
+            </g>
+          </svg>
+          <h3>Inquiry received.</h3>
+          <p>Given our commitment to slowness, expect a reply within 3–5 business days — which by league standards is lightning fast.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section--tint" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <span class="eyebrow">Frequently Filed Questions</span>
+    <h2 class="section-title" id="faq-h">Before you enter</h2>
+    <div class="faq-list" id="faqList"><!-- injected --></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ CTA BAND ============ -->
+<section class="section cta-band" aria-labelledby="cta-h">
+  <div class="stamp-wm" style="top:14px;right:24px" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="crest-lg" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none">
+        <g stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M34 62 c-8 0 -13 -6 -13 -14 c0 -10 9 -18 20 -18 c11 0 19 8 19 18 c0 6 -5 11 -11 11 c-5 0 -9 -4 -9 -9 c0 -4 3 -6 6 -6"/>
+          <path d="M34 62 h24"/><path d="M58 55 l8 -16 M64 39 l4 3 M60 40 l4 3"/>
+        </g>
+      </svg>
+    </span>
+    <h2 id="cta-h">The slowest mail wins. Take your time.</h2>
+    <p>Season 14 is open · registration is free · your card leaves whenever you're ready</p>
+    <a href="#register" class="btn btn--lg">Join the league</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="crest" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none">
+            <g stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M34 62 c-8 0 -13 -6 -13 -14 c0 -10 9 -18 20 -18 c11 0 19 8 19 18 c0 6 -5 11 -11 11 c-5 0 -9 -4 -9 -9 c0 -4 3 -6 6 -6"/>
+              <path d="M34 62 h24"/><path d="M58 55 l8 -16 M64 39 l4 3 M60 40 l4 3"/>
+            </g>
+          </svg>
+        </span>
+        <div class="bt">Snail Mail Racing League</div>
+        <p>Competitive postal racing since 2012. The last postcard to arrive wins.</p>
+        <a class="powered" href="#">Powered by Wix Headless ↗</a>
+      </div>
+      <div class="foot-col">
+        <h4>Navigate</h4>
+        <a href="#top">Home</a>
+        <a href="#standings">Standings</a>
+        <a href="#hall-of-fame">Hall of Fame</a>
+        <a href="#rules">Rules</a>
+        <a href="#gazette">The Gazette</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>League HQ</h4>
+        <p><a href="mailto:league@snailmailracing.org">league@snailmailracing.org</a></p>
+        <p><a href="tel:+41443017890">+41 44 301 7890</a></p>
+        <p>Bahnhofstrasse 12<br>8001 Zurich, Switzerland</p>
+        <p class="ref" style="color:#9A9484">Mon–Fri 9:00–17:00 CET</p>
+      </div>
+      <div class="foot-col">
+        <h4>Follow the crawl</h4>
+        <div class="foot-social">
+          <a href="#" aria-label="Instagram @snailmailracing">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook @snailmailracingleague">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8a1 1 0 0 1 1-1z"/></svg>
+          </a>
+          <a href="#" aria-label="X @smrlofficial">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6z"/></svg>
+          </a>
+        </div>
+        <p class="ref" style="margin-top:16px;color:#9A9484">@snailmailracing · @smrlofficial</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Snail Mail Racing League · Zurich</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY JOIN BAR ============ -->
+<div class="sticky-join" id="stickyJoin">
+  <span class="sj-txt"><b>Season 14 is open</b>Registration is free.</span>
+  <a href="#register" class="btn">Join</a>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>

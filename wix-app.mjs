@@ -10,13 +10,17 @@ import {
   fetchBlogPosts,
   wireForm,
 } from "./wix-render.mjs";
+import { wireEventRsvp } from "./wix-events.mjs";
 import { client } from "./wix-client.mjs";
 
 async function loadEvents() {
   try {
     const result = await client.wixEventsV2.queryEvents({ limit: 6 });
     const evRows = result.events || result.items || [];
-    if (evRows.length) renderEvents(evRows);
+    if (evRows.length) {
+      renderEvents(evRows);
+      wireEventRsvp();
+    }
   } catch (err) {
     console.warn("Wix events load failed", err);
   }

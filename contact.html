@@ -24,7 +24,7 @@ window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":
   <div class="wrap">
     <span class="eyebrow">Form 14-A · General Inquiry</span>
     <h1 class="section-title">Contact league HQ</h1>
-    <p class="section-lede">Questions about routes, registration, or press enquiries. We reply in due course — never ahead of schedule.</p>
+    <p class="section-lede">Questions about routes, press, or league policy. For <strong>season registration</strong>, use <a href="/#register">Join the league</a> on the home page — that is a separate form.</p>
 
     <div class="contact-grid">
       <div class="contact-card">
@@ -36,41 +36,30 @@ window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":
       </div>
 
       <div class="form-body contact-form-wrap">
-        <form id="regForm" novalidate>
+        <h2 class="visually-hidden">Inquiry form</h2>
+        <form id="contactForm" novalidate>
           <div class="form-row">
             <div class="field">
-              <label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label>
-              <input id="f-name" name="name" type="text" autocomplete="name" required />
+              <label for="c-name">Full name <span class="req" aria-hidden="true">*</span></label>
+              <input id="c-name" name="name" type="text" autocomplete="name" required />
             </div>
             <div class="field">
-              <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
-              <input id="f-email" name="email" type="email" autocomplete="email" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label for="f-country">Country <span class="req" aria-hidden="true">*</span></label>
-              <input id="f-country" name="country" type="text" autocomplete="country-name" required />
-            </div>
-            <div class="field">
-              <label for="f-format">Preferred race format <span class="req" aria-hidden="true">*</span></label>
-              <select id="f-format" name="preferredRaceFormat" required>
-                <option value="">Select a format…</option>
-                <option>Open Corridor</option>
-                <option>Fixed Terminus</option>
-                <option>Return to Sender</option>
-                <option>Undecided — surprise me</option>
-              </select>
+              <label for="c-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="c-email" name="email" type="email" autocomplete="email" required />
             </div>
           </div>
           <div class="field">
-            <label for="f-msg">Message <span style="color:var(--muted);font-weight:400">(optional)</span></label>
-            <textarea id="f-msg" name="message" placeholder="Your inquiry or registration note."></textarea>
+            <label for="c-country">Country <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+            <input id="c-country" name="country" type="text" autocomplete="country-name" />
+          </div>
+          <div class="field">
+            <label for="c-msg">Your inquiry <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="c-msg" name="message" required placeholder="Route question, press request, or general correspondence."></textarea>
           </div>
           <p class="reassure">We only use your email to respond to this inquiry. No newsletters unless you opt in.</p>
           <button type="submit" class="btn btn--lg" style="width:100%">Send inquiry</button>
         </form>
-        <div class="form-success" id="formSuccess" role="status">
+        <div class="form-success" id="contactSuccess" role="status">
           <h3>Inquiry received.</h3>
           <p>Given our commitment to slowness, expect a reply within 3–5 business days — which by league standards is lightning fast.</p>
         </div>

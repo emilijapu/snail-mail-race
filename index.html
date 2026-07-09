@@ -528,6 +528,34 @@ window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":
 
 </main>
 
+<dialog id="rsvpModal" class="rsvp-modal" aria-labelledby="rsvpEventTitle">
+  <div class="rsvp-panel">
+    <button type="button" class="rsvp-close" id="rsvpClose" aria-label="Close">×</button>
+    <span class="eyebrow">Event RSVP · Wix Events</span>
+    <h2 id="rsvpEventTitle">Register for event</h2>
+    <form id="rsvpForm" class="rsvp-form">
+      <div class="form-row">
+        <div class="field">
+          <label for="rsvpFirst">First name</label>
+          <input id="rsvpFirst" name="firstName" type="text" required autocomplete="given-name" />
+        </div>
+        <div class="field">
+          <label for="rsvpLast">Last name</label>
+          <input id="rsvpLast" name="lastName" type="text" required autocomplete="family-name" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="rsvpEmail">Email</label>
+        <input id="rsvpEmail" name="email" type="email" required autocomplete="email" />
+      </div>
+      <p class="reassure">Your RSVP is recorded via Wix Events. No payment required for these fixtures.</p>
+      <button type="submit" class="btn btn--lg" style="width:100%">Confirm RSVP</button>
+    </form>
+    <p id="rsvpSuccess" class="form-success" hidden role="status"></p>
+    <p id="rsvpErr" class="err" hidden></p>
+  </div>
+</dialog>
+
 <!-- ============ CTA BAND ============ -->
 <section class="section cta-band" aria-labelledby="cta-h">
   <div class="stamp-wm" style="top:14px;right:24px" aria-hidden="true"></div>

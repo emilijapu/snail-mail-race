@@ -86,9 +86,34 @@ async function showMember() {
   memberView.hidden = false;
 }
 
+async function addRace(e) {
+  e.preventDefault();
+  const col = cfg.cms.collections.memberRaces;
+  if (!col) return;
+  const origin = document.getElementById("r-origin").value.trim();
+  const destination = document.getElementById("r-dest").value.trim();
+  const season = document.getElementById("r-season").value.trim();
+  const status = document.getElementById("r-status").value;
+  const departedAt = new Date().toISOString();
+  await client.items.insert(col, {
+    origin,
+    destination,
+    season,
+    status,
+    departedAt,
+    daysInTransit: 0,
+  });
+  document.getElementById("raceForm").reset();
+  document.getElementById("r-season").value = "Season 14";
+  document.getElementById("raceFormOk").hidden = false;
+  const races = await loadRaces();
+  renderRaces(races);
+}
+
 async function init() {
   document.getElementById("loginBtn")?.addEventListener("click", () => startLogin().catch(showErr));
   document.getElementById("logoutBtn")?.addEventListener("click", () => logout().catch(showErr));
+  document.getElementById("raceForm")?.addEventListener("submit", (e) => addRace(e).catch(showErr));
 
   if (client.auth.loggedIn()) {
     try {

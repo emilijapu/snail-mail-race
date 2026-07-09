@@ -1,3 +1,3 @@
-import { wireForm } from "../wix-render.mjs";
+import { wireInquiryForm } from "../wix-render.mjs";
 
-wireForm();
+wireInquiryForm();

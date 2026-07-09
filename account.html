@@ -73,7 +73,7 @@ window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":
 
       <section class="account-card" style="margin-top:22px">
         <h3>Active postcards in transit</h3>
-        <p class="muted" style="margin-bottom:16px">Entries tied to your member account. Empty is normal for a new racer.</p>
+        <p class="muted" style="margin-bottom:16px">Entries tied to your member account. Use the form below to log your own postcards.</p>
         <div class="table-frame">
           <div class="table-scroll">
             <table class="standings account-table">
@@ -89,7 +89,39 @@ window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":
             </table>
           </div>
         </div>
-        <p id="raceEmpty" class="ref" hidden>No active entries yet. <a href="/#register">Register for this season</a>.</p>
+        <p id="raceEmpty" class="ref" hidden>No active entries yet. <a href="/#register">Register for this season</a> or log a postcard below.</p>
+      </section>
+
+      <section class="account-card race-entry-card" style="margin-top:22px">
+        <h3>Log a postcard in transit</h3>
+        <p class="muted" style="margin-bottom:16px">Add an active race entry to your member register. Only you can see entries you create.</p>
+        <form id="raceForm" class="race-form">
+          <div class="form-row">
+            <div class="field">
+              <label for="r-origin">Origin</label>
+              <input id="r-origin" name="origin" type="text" required placeholder="e.g. Oslo, Norway" />
+            </div>
+            <div class="field">
+              <label for="r-dest">Destination</label>
+              <input id="r-dest" name="destination" type="text" required placeholder="e.g. Ulaanbaatar, Mongolia" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="r-season">Season</label>
+              <input id="r-season" name="season" type="text" required placeholder="Season 14" value="Season 14" />
+            </div>
+            <div class="field">
+              <label for="r-status">Status</label>
+              <select id="r-status" name="status">
+                <option>In Transit</option>
+                <option>Arrived</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn">Add entry</button>
+        </form>
+        <p id="raceFormOk" class="ref" hidden style="margin-top:12px;color:var(--ink)">Entry logged. Refresh not required — table updates below.</p>
       </section>
     </div>
 

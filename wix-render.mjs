@@ -173,13 +173,31 @@ export function renderEvents(evRows) {
   evRows.forEach((ev) => {
     const dt = ev.dateAndTimeSettings?.formatted?.dateAndTime || ev.dateAndTimeSettings?.startDate || "";
     const loc = ev.location?.name || "Global / Remote";
+    const eventId = ev._id || ev.id;
+    const regStatus = ev.registration?.status || "";
+    const regOpen = !regStatus || regStatus.startsWith("OPEN");
+    const regType = ev.registration?.initialType || ev.registration?.type || "RSVP";
     const div = document.createElement("div");
     div.className = "event";
-    div.innerHTML = `
-      <span class="edate">${dt}</span>
-      <h3>${ev.title}</h3>
-      <span class="eloc">${loc}</span>
-      <a href="/#register" class="btn">Register</a>`;
+    if (regType === "RSVP" && regOpen && eventId) {
+      div.innerHTML = `
+        <span class="edate">${dt}</span>
+        <h3>${ev.title}</h3>
+        <span class="eloc">${loc}</span>
+        <button type="button" class="btn btn-rsvp" data-event-id="${eventId}" data-event-title="${ev.title?.replace(/"/g, "&quot;") || ""}">RSVP</button>`;
+    } else if (!regOpen) {
+      div.innerHTML = `
+        <span class="edate">${dt}</span>
+        <h3>${ev.title}</h3>
+        <span class="eloc">${loc}</span>
+        <span class="ref">Registration closed</span>`;
+    } else {
+      div.innerHTML = `
+        <span class="edate">${dt}</span>
+        <h3>${ev.title}</h3>
+        <span class="eloc">${loc}</span>
+        <a href="/#register" class="btn">Register</a>`;
+    }
     grid.appendChild(div);
   });
 }
@@ -250,6 +268,31 @@ export function wireForm() {
       document.getElementById("formSuccess")?.classList.add("show");
     } catch (err) {
       console.error("Wix form submit failed", err);
+      alert("Submission failed. Please try again.");
+    }
+  }, true);
+}
+
+export function wireInquiryForm() {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if (form.reportValidity?.() === false) return;
+    const data = {
+      full_name: document.getElementById("c-name").value.trim(),
+      email: document.getElementById("c-email").value.trim(),
+      country: document.getElementById("c-country")?.value.trim() || "—",
+      preferred_race_format: "General inquiry",
+      message: document.getElementById("c-msg").value.trim(),
+    };
+    try {
+      await client.submissions.createSubmission({ formId: cfg.form.formId, submissions: data });
+      form.style.display = "none";
+      document.getElementById("contactSuccess")?.classList.add("show");
+    } catch (err) {
+      console.error("Inquiry submit failed", err);
       alert("Submission failed. Please try again.");
     }
   }, true);

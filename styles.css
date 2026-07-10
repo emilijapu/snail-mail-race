@@ -173,7 +173,7 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 .transit-head h2{font-size:clamp(30px,5vw,52px);color:var(--paper);margin-top:14px}
 .transit-head p{max-width:40ch;color:#D9E6C4;font-weight:500}
 .transit .eyebrow{background:var(--yellow)}
-.leaders{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.leaders{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;min-height:280px}
 .leader{background:var(--paper);color:var(--ink);border:var(--bd);border-radius:14px;padding:22px;box-shadow:var(--sh)}
 .lead-rank{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;
   background:var(--lime);border:2px solid var(--ink);border-radius:999px;padding:3px 10px;display:inline-block}
@@ -200,7 +200,7 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 
 /* ---------- standings ---------- */
 .standings-head{margin-bottom:34px}
-.table-frame{background:var(--paper);border:var(--bd);border-radius:16px;box-shadow:var(--sh-lg);overflow:hidden}
+.table-frame{background:var(--paper);border:var(--bd);border-radius:16px;box-shadow:var(--sh-lg);overflow:hidden;min-height:520px}
 .table-scroll{overflow-x:auto}
 table.standings{width:100%;border-collapse:collapse;min-width:640px}
 table.standings caption{text-align:left;font-family:var(--mono);font-size:11px;color:var(--muted);
@@ -250,7 +250,7 @@ table.standings caption{text-align:left;font-family:var(--mono);font-size:11px;c
 .hof-controls button{width:52px;height:52px;border:var(--bd);border-radius:50%;background:var(--lime);
   display:grid;place-items:center;box-shadow:var(--sh-sm);transition:transform .08s ease,box-shadow .08s ease}
 .hof-controls button:hover{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
-.hof-rail{list-style:none;margin:0;display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 4px 24px;scrollbar-width:thin}
+.hof-rail{list-style:none;margin:0;display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 4px 24px;scrollbar-width:thin;min-height:420px}
 .hof-card{scroll-snap-align:start;flex:0 0 340px;background:var(--paper);border:var(--bd);border-radius:16px;
   box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column}
 .hof-card .pcwrap{background:var(--bg);border-bottom:var(--bd);padding:18px}
@@ -278,7 +278,7 @@ table.standings caption{text-align:left;font-family:var(--mono);font-size:11px;c
 .who .mt{font-family:var(--mono);font-size:11px;color:var(--muted)}
 
 /* ---------- gazette ---------- */
-.gaz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
+.gaz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px;min-height:280px}
 .post{background:var(--paper);border:var(--bd);border-radius:16px;padding:24px;box-shadow:var(--sh);
   display:flex;flex-direction:column;transition:transform .1s ease,box-shadow .1s ease}
 .post:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink)}
@@ -395,7 +395,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:56px 30px}
   .hero .wrap{grid-template-columns:1fr}
   .postcard-stage{order:-1;min-height:300px}
   .how-grid,.gaz-grid,.ev-grid{grid-template-columns:1fr 1fr}
-  .leaders{grid-template-columns:1fr}
+  .leaders{grid-template-columns:1fr;min-height:840px}
   .form-shell{grid-template-columns:1fr}
 }
 @media (max-width:760px){

@@ -6,9 +6,10 @@
 <title>Snail Mail Racing League — The Slowest Mail Wins</title>
 <meta name="description" content="The world's only competitive league for slow postal delivery. Mail an identical postcard through the slowest route you can find. The last card to arrive wins the season. Est. 2012, Zurich." />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9H6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMnuECoAsyJBOm_OJ2iCAAV_upDo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/bricolage-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
 <style>
 :root{
   --bg:#EAF3D7;--paper:#FFFEF9;--ink:#141210;--muted:#5F5A4E;
@@ -78,8 +79,6 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 </style>
 <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="styles.css"></noscript>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400;700&display=swap"></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -249,7 +248,7 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 
 <!-- ============ LIVE TRANSIT COUNTER (bonus) ============ -->
 <section class="section section--dark transit" id="transit" aria-labelledby="transit-h">
-  <div class="stamp-wm" style="bottom:-24px;right:20px" aria-hidden="true"></div>
+  <div class="stamp-wm" style="bottom:-24px;right:20px" aria-hidden="true"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="#FFCE3A" stroke="#141210" stroke-width="7"/><circle cx="100" cy="100" r="72" fill="none" stroke="#141210" stroke-width="3"/><path id="wm-transit" d="M100 100 m-83 0 a83 83 0 1 1 166 0 a83 83 0 1 1 -166 0" fill="none"/><text font-family="Space Mono, monospace" font-weight="700" font-size="14" letter-spacing="1.5" fill="#141210"><textPath href="#wm-transit" startOffset="0%">IN TRANSIT · SNAIL MAIL RACING LEAGUE · </textPath></text><text x="100" y="96" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="30" fill="#141210">SMRL</text><text x="100" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#EE3B2F">ZURICH·CH</text></svg></div>
   <div class="wrap">
     <div class="transit-head">
       <div>
@@ -258,13 +257,35 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
       </div>
       <p>These three postcards left home a long time ago and are, to the best of our knowledge, still out there. Counters run live from verified departure postmarks.</p>
     </div>
-    <div class="leaders" id="leaders" aria-live="off"></div>
+    <div class="leaders" id="leaders" aria-live="off">
+      <div class="leader" role="group" data-days="1247" data-rank="1">
+        <div class="lead-rank">Leader · No. 1</div>
+        <div class="lead-route">Nauru → Mongolia</div>
+        <div class="lead-handle">@island_hopper</div>
+        <div class="bignum"><span class="dval">1,247</span><small>days in transit</small></div>
+        <div class="clock"><span>elapsed</span><b class="cval">—</b></div>
+      </div>
+      <div class="leader" role="group" data-days="1189" data-rank="2">
+        <div class="lead-rank">Leader · No. 2</div>
+        <div class="lead-route">Niue → Andorra</div>
+        <div class="lead-handle">@slowpost_nz</div>
+        <div class="bignum"><span class="dval">1,189</span><small>days in transit</small></div>
+        <div class="clock"><span>elapsed</span><b class="cval">—</b></div>
+      </div>
+      <div class="leader" role="group" data-days="1102" data-rank="3">
+        <div class="lead-rank">Leader · No. 3</div>
+        <div class="lead-route">Kiribati → San Marino</div>
+        <div class="lead-handle">@deepsouth_mailer</div>
+        <div class="bignum"><span class="dval">1,102</span><small>days in transit</small></div>
+        <div class="clock"><span>elapsed</span><b class="cval">—</b></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============ HOW IT WORKS ============ -->
 <section class="section" id="how" aria-labelledby="how-h">
-  <div class="stamp-wm" style="top:20px;left:-46px" aria-hidden="true"></div>
+  <div class="stamp-wm" style="top:20px;left:-46px" aria-hidden="true"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="#FFCE3A" stroke="#141210" stroke-width="7"/><circle cx="100" cy="100" r="72" fill="none" stroke="#141210" stroke-width="3"/><path id="wm-how" d="M100 100 m-83 0 a83 83 0 1 1 166 0 a83 83 0 1 1 -166 0" fill="none"/><text font-family="Space Mono, monospace" font-weight="700" font-size="14" letter-spacing="1.5" fill="#141210"><textPath href="#wm-how" startOffset="0%">PROCEDURE · SNAIL MAIL RACING LEAGUE · </textPath></text><text x="100" y="96" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="30" fill="#141210">SMRL</text><text x="100" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#EE3B2F">ZURICH·CH</text></svg></div>
   <div class="wrap">
     <span class="eyebrow">Form 14-A · Procedure</span>
     <h2 class="section-title" id="how-h">How a race works</h2>
@@ -318,7 +339,16 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
               <th scope="col">Status</th>
             </tr>
           </thead>
-          <tbody id="standingsBody"><!-- injected --></tbody>
+          <tbody id="standingsBody">
+            <tr><td class="rk">1</td><td><span class="handle">@island_hopper</span></td><td class="flagcell"><span class="fg" aria-hidden="true">🇳🇷</span>Nauru</td><td>Mongolia</td><td><span class="days"><span class="cu" data-target="1247">1,247</span><small>days</small></span></td><td><span class="badge badge--transit">In Transit</span></td></tr>
+            <tr><td class="rk">2</td><td><span class="handle">@slowpost_nz</span></td><td class="flagcell"><span class="fg" aria-hidden="true">🇳🇺</span>Niue</td><td>Andorra</td><td><span class="days"><span class="cu" data-target="1189">1,189</span><small>days</small></span></td><td><span class="badge badge--transit">In Transit</span></td></tr>
+            <tr><td class="rk">3</td><td><span class="handle">@deepsouth_mailer</span></td><td class="flagcell"><span class="fg" aria-hidden="true">🇰🇮</span>Kiribati</td><td>San Marino</td><td><span class="days"><span class="cu" data-target="1102">1,102</span><small>days</small></span></td><td><span class="badge badge--transit">In Transit</span></td></tr>
+            <tr><td class="rk">4</td><td><span class="handle">@nordlys_sender</span></td><td class="flagcell"><span class="fg" aria-hidden="true">🇳🇴</span>Norway</td><td>Argentina</td><td><span class="days"><span class="cu" data-target="958">958</span><small>days</small></span></td><td><span class="badge badge--transit">In Transit</span></td></tr>
+            <tr><td class="rk">5</td><td><span class="handle">@atoll_annie</span></td><td class="flagcell"><span class="fg" aria-hidden="true">🇹🇻</span>Tuvalu</td><td>Liechtenstein</td><td><span class="days"><span class="cu" data-target="844">844</span><small>days</small></span></td><td><span class="badge badge--transit">In Transit</span></td></tr>
+            <tr><td class="rk">6</td><td><span class="handle">@surface_only</span></td><td class="flagcell"><span class="fg" aria-hidden="true">🇫🇴</span>Faroe Islands</td><td>Lesotho</td><td><span class="days"><span class="cu" data-target="611">611</span><small>days</small></span></td><td><span class="badge badge--transit">In Transit</span></td></tr>
+            <tr><td class="rk">7</td><td><span class="handle">@lost_at_azores</span></td><td class="flagcell"><span class="fg" aria-hidden="true">🇵🇹</span>Azores</td><td>Vanuatu</td><td><span class="days" style="font-size:15px;color:var(--muted)">— <small>presumed lost</small></span></td><td><span class="badge badge--lost">Lost</span></td></tr>
+            <tr><td class="rk">8</td><td><span class="handle">@vaduz_val</span></td><td class="flagcell"><span class="fg" aria-hidden="true">🇱🇮</span>Liechtenstein</td><td>Tuvalu</td><td><span class="days"><span class="cu" data-target="492">492</span><small>days</small></span></td><td><span class="badge badge--arrived">Arrived</span></td></tr>
+          </tbody>
         </table>
       </div>
     </div>
@@ -332,7 +362,7 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 </section>
 
 <!-- seamless seal binding the register to the rule book -->
-<div class="seam" aria-hidden="true"><div class="seam-seal"></div></div>
+<div class="seam" aria-hidden="true"><div class="seam-seal"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="#FFCE3A" stroke="#141210" stroke-width="7"/><circle cx="100" cy="100" r="72" fill="none" stroke="#141210" stroke-width="3"/><path id="wm-seal" d="M100 100 m-83 0 a83 83 0 1 1 166 0 a83 83 0 1 1 -166 0" fill="none"/><text font-family="Space Mono, monospace" font-weight="700" font-size="14" letter-spacing="1.5" fill="#141210"><textPath href="#wm-seal" startOffset="0%">OFFICIAL SEAL · SNAIL MAIL RACING LEAGUE · </textPath></text><text x="100" y="96" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="30" fill="#141210">SMRL</text><text x="100" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#EE3B2F">ZURICH·CH</text></svg></div></div>
 
 <!-- ============ RULES (requirement) ============ -->
 <section class="section" id="rules" aria-labelledby="rules-h">
@@ -404,7 +434,7 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 
 <!-- ============ HALL OF FAME (requirement) ============ -->
 <section class="section section--tint" id="hall-of-fame" aria-labelledby="hof-h">
-  <div class="stamp-wm" style="top:-24px;left:-40px" aria-hidden="true"></div>
+  <div class="stamp-wm" style="top:-24px;left:-40px" aria-hidden="true"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="#FFCE3A" stroke="#141210" stroke-width="7"/><circle cx="100" cy="100" r="72" fill="none" stroke="#141210" stroke-width="3"/><path id="wm-hof" d="M100 100 m-83 0 a83 83 0 1 1 166 0 a83 83 0 1 1 -166 0" fill="none"/><text font-family="Space Mono, monospace" font-weight="700" font-size="14" letter-spacing="1.5" fill="#141210"><textPath href="#wm-hof" startOffset="0%">THE ARCHIVE · SNAIL MAIL RACING LEAGUE · </textPath></text><text x="100" y="96" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="30" fill="#141210">SMRL</text><text x="100" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#EE3B2F">ZURICH·CH</text></svg></div>
   <div class="wrap">
     <div class="hof-head">
       <div>
@@ -440,7 +470,7 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 
 <!-- ============ GAZETTE ============ -->
 <section class="section section--tint" id="gazette" aria-labelledby="gaz-h">
-  <div class="stamp-wm" style="bottom:-28px;right:22px" aria-hidden="true"></div>
+  <div class="stamp-wm" style="bottom:-28px;right:22px" aria-hidden="true"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="#FFCE3A" stroke="#141210" stroke-width="7"/><circle cx="100" cy="100" r="72" fill="none" stroke="#141210" stroke-width="3"/><path id="wm-gazette" d="M100 100 m-83 0 a83 83 0 1 1 166 0 a83 83 0 1 1 -166 0" fill="none"/><text font-family="Space Mono, monospace" font-weight="700" font-size="14" letter-spacing="1.5" fill="#141210"><textPath href="#wm-gazette" startOffset="0%">THE GAZETTE · SNAIL MAIL RACING LEAGUE · </textPath></text><text x="100" y="96" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="30" fill="#141210">SMRL</text><text x="100" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#EE3B2F">ZURICH·CH</text></svg></div>
   <div class="wrap">
     <span class="eyebrow">The Gazette · Issue 47</span>
     <h2 class="section-title" id="gaz-h">Latest from the Gazette</h2>
@@ -486,7 +516,7 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 
 <!-- ============ REGISTRATION FORM (requirement) ============ -->
 <section class="section reg" id="register" aria-labelledby="reg-h">
-  <div class="stamp-wm" style="top:-20px;left:-40px" aria-hidden="true"></div>
+  <div class="stamp-wm" style="top:-20px;left:-40px" aria-hidden="true"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="#FFCE3A" stroke="#141210" stroke-width="7"/><circle cx="100" cy="100" r="72" fill="none" stroke="#141210" stroke-width="3"/><path id="wm-register" d="M100 100 m-83 0 a83 83 0 1 1 166 0 a83 83 0 1 1 -166 0" fill="none"/><text font-family="Space Mono, monospace" font-weight="700" font-size="14" letter-spacing="1.5" fill="#141210"><textPath href="#wm-register" startOffset="0%">FORM 14-B · SNAIL MAIL RACING LEAGUE · </textPath></text><text x="100" y="96" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="30" fill="#141210">SMRL</text><text x="100" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#EE3B2F">ZURICH·CH</text></svg></div>
   <div class="wrap">
     <span class="eyebrow">Form 14-B · Season Registration</span>
     <h2 class="section-title" id="reg-h">Join the league</h2>
@@ -607,7 +637,7 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 
 <!-- ============ CTA BAND ============ -->
 <section class="section cta-band" aria-labelledby="cta-h">
-  <div class="stamp-wm" style="top:14px;right:24px" aria-hidden="true"></div>
+  <div class="stamp-wm" style="top:14px;right:24px" aria-hidden="true"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="#FFCE3A" stroke="#141210" stroke-width="7"/><circle cx="100" cy="100" r="72" fill="none" stroke="#141210" stroke-width="3"/><path id="wm-cta" d="M100 100 m-83 0 a83 83 0 1 1 166 0 a83 83 0 1 1 -166 0" fill="none"/><text font-family="Space Mono, monospace" font-weight="700" font-size="14" letter-spacing="1.5" fill="#141210"><textPath href="#wm-cta" startOffset="0%">SEASON 14 · SNAIL MAIL RACING LEAGUE · </textPath></text><text x="100" y="96" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="30" fill="#141210">SMRL</text><text x="100" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#EE3B2F">ZURICH·CH</text></svg></div>
   <div class="wrap">
     <span class="crest-lg" aria-hidden="true">
       <svg viewBox="0 0 100 100" fill="none">

@@ -87,16 +87,24 @@
     "hall-of-fame":"THE ARCHIVE",gazette:"THE GAZETTE",register:"FORM 14-B"};
   document.querySelectorAll("[id]").forEach(function(sec){
     var wm = sec.querySelector(":scope > .stamp-wm");
-    if(wm && wmLabels[sec.id]) wm.innerHTML = stampSVG(wmLabels[sec.id]);
+    if(wm && wmLabels[sec.id] && !wm.querySelector("svg")) wm.innerHTML = stampSVG(wmLabels[sec.id]);
   });
   var ctaWm = document.querySelector(".cta-band .stamp-wm");
-  if(ctaWm) ctaWm.innerHTML = stampSVG("SEASON 14");
+  if(ctaWm && !ctaWm.querySelector("svg")) ctaWm.innerHTML = stampSVG("SEASON 14");
   var seamSeal = document.querySelector(".seam-seal");
-  if(seamSeal) seamSeal.innerHTML = stampSVG("OFFICIAL SEAL");
+  if(seamSeal && !seamSeal.querySelector("svg")) seamSeal.innerHTML = stampSVG("OFFICIAL SEAL");
 
   /* ---------- LIVE TRANSIT COUNTERS (bonus) ---------- */
   var leadersEl = document.getElementById("leaders");
   if (leadersEl) {
+  var leaderNodes = leadersEl.querySelectorAll(".leader");
+  var wiredLeaders = [];
+  if (leaderNodes.length) {
+    leaderNodes.forEach(function(el, i){
+      var days = +el.getAttribute("data-days") || (leaders[i] && leaders[i].days) || 0;
+      wiredLeaders.push({days: days, depart: new Date(Date.now() - days*86400000), node: el});
+    });
+  } else {
   leaders.forEach(function(l){
     l.depart = new Date(Date.now() - l.days*86400000);
     var el = document.createElement("div");
@@ -109,12 +117,13 @@
       +'<div class="bignum"><span class="dval">'+l.days+'</span><small>days in transit</small></div>'
       +'<div class="clock"><span>elapsed</span><b class="cval">—</b></div>';
     leadersEl.appendChild(el);
-    l.node = el;
+    wiredLeaders.push({days: l.days, depart: l.depart, node: el});
   });
+  }
   function pad(n){return (n<10?"0":"")+n;}
   function tickLeaders(){
     var now = Date.now();
-    leaders.forEach(function(l){
+    wiredLeaders.forEach(function(l){
       var ms = now - l.depart.getTime();
       var totalSec = Math.floor(ms/1000);
       var d = Math.floor(totalSec/86400);
@@ -131,7 +140,7 @@
 
   /* ---------- STANDINGS TABLE + count-up ---------- */
   var body = document.getElementById("standingsBody");
-  if (body) {
+  if (body && !body.children.length) {
   var statusMap = {transit:["In Transit","transit"],arrived:["Arrived","arrived"],lost:["Lost","lost"]};
   standings.forEach(function(r){
     var tr = document.createElement("tr");

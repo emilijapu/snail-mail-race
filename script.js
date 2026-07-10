@@ -292,3 +292,15 @@
     setTimeout(initBelowFold, 1);
   }
 })();
+
+(function(){
+  function loadWix(){
+    import("./wix-app.mjs").then(function(m){ return m.init(); }).catch(function(){});
+  }
+  function schedule(){
+    if ("requestIdleCallback" in window) requestIdleCallback(loadWix, { timeout: 5000 });
+    else setTimeout(loadWix, 2000);
+  }
+  if (document.readyState === "complete") schedule();
+  else window.addEventListener("load", schedule, { once: true });
+})();

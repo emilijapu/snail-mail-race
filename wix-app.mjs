@@ -53,17 +53,4 @@ async function init() {
   window.__wixReady = true;
 }
 
-function scheduleInit() {
-  const run = () => { init(); };
-  if ("requestIdleCallback" in window) {
-    requestIdleCallback(run, { timeout: 2500 });
-  } else {
-    setTimeout(run, 1);
-  }
-}
-
-if (document.readyState === "complete") {
-  scheduleInit();
-} else {
-  window.addEventListener("load", scheduleInit, { once: true });
-}
+export { init };

@@ -6,11 +6,15 @@
 <title>Snail Mail Racing League — The Slowest Mail Wins</title>
 <meta name="description" content="The world's only competitive league for slow postal delivery. Mail an identical postcard through the slowest route you can find. The last card to arrive wins the season. Est. 2012, Zurich." />
 
-<link rel="preload" href="/fonts/bricolage-800.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css">
+<link rel="preconnect" href="https://esm.sh" crossorigin>
+<link rel="preconnect" href="https://www.wixapis.com" crossorigin>
+<link rel="preconnect" href="https://edge.wixapis.com" crossorigin>
+<link rel="preload" href="/fonts/bricolage-800.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
 <style>
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:800;font-display:optional;src:url("/fonts/bricolage-800.woff2") format("woff2")}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:400 500;font-display:optional;src:url("/fonts/space-grotesk.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-style:normal;font-weight:400;font-display:optional;src:url("/fonts/space-mono-400.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-style:normal;font-weight:700;font-display:optional;src:url("/fonts/space-mono-700.woff2") format("woff2")}
 :root{
   --bg:#EAF3D7;--paper:#FFFEF9;--ink:#141210;--muted:#5F5A4E;
   --red:#EE3B2F;--blue:#2F63FF;--lime:#B6E645;--yellow:#FFCE3A;
@@ -719,7 +723,6 @@ header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:var(
 <script>
 window.WIX_CONFIG = {"siteId":"56d7087c-434a-45a1-a38b-277ff14c6016","clientId":"5b263943-273d-425f-b980-0eb2873c2864","cms":{"collections":{"standings":"StandingsRow","hallOfFame":"LegendaryDelivery","testimonials":"MemberTestimonial","memberRaces":"MemberRace"}},"form":{"formId":"121851fd-1c38-4a16-9047-cd9281657eea","targets":["full_name","email","country","preferred_race_format","message"]}};
 </script>
-<script type="module" src="wix-app.mjs"></script>
 <script src="script.js" defer></script>
 </body>
 </html>
